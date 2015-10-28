@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>FragmentTabHost使用实例 | 缪运泽</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="FragmentTabHost的使用实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FragmentTabHost使用实例">
+<meta property="og:url" content="http://yoursite.com/2015/10/28/FragmentTabHostDemo/index.html">
+<meta property="og:site_name" content="缪运泽">
+<meta property="og:description" content="FragmentTabHost的使用实例">
+<meta property="og:image" content="http://7xnuqp.com1.z0.glb.clouddn.com/demo.jpeg">
+<meta property="og:updated_time" content="2015-10-28T01:59:02.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FragmentTabHost使用实例">
+<meta name="twitter:description" content="FragmentTabHost的使用实例">
+  
+    <link rel="alternative" href="/atom.xml" title="缪运泽" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">缪运泽</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">miaoyunze@foxmail.com</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-FragmentTabHostDemo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/FragmentTabHostDemo/" class="article-date">
+  <time datetime="2015-10-28T00:43:59.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FragmentTabHost使用实例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FragmentTabHost的使用实例<br><a id="more"></a></p>
+<h2 id="1-什么是FragmentTabHost">1.什么是FragmentTabHost</h2><p>在新浪微博、QQ、微信、OSChina客户端等APP中，底部均有一个类似tab标签栏的东西，通过点击标签栏中的不同标签，标签内容区域会显示响应的内容。</p>
+<h2 id="2-使用FragmentTabHost">2.使用FragmentTabHost</h2><p>效果图：<br><img src="http://7xnuqp.com1.z0.glb.clouddn.com/demo.jpeg" alt=""><br><a href="https://github.com/alivebao/FragmentHostTabDemo" target="_blank" rel="external">Demo代码下载</a><br>activity_main.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">FrameLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/realtabcontent"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"0dip"</span></span><br><span class="line">        <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v4.app.FragmentTabHost</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/tabhost"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_marginTop</span>=<span class="value">"4dip"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>其中id为realtabcontent的Fragment即为标签内容区域，其通过setup与FragmentTabHost关联，通过addTab添加各标签：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FragmentTabHost mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);</span><br><span class="line">mTabHost.setup(<span class="keyword">this</span>, getSupportFragmentManager(), R.id.realtabcontent);</span><br><span class="line">mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"0"</span>).setIndicator(<span class="string">"News"</span>), FragmentNews.class, <span class="keyword">null</span>);</span><br><span class="line">mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"1"</span>).setIndicator(<span class="string">"Music"</span>), FragmentMusic.class, <span class="keyword">null</span>);</span><br><span class="line">mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"2"</span>).setIndicator(<span class="string">"Others"</span>), FragmentOthers.class, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></p>
+<p>FragmentNews、FragmentMusic及FragmentOhters均继承自<strong>android.support.v4.app.Fragment</strong>包下的Fragment。<br>FragmentTabHost的addTab函数原型为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTab</span><span class="params">(TabSpec tabSpec, Class&lt;?&gt; clss, Bundle args)</span> </span>&#123;</span><br><span class="line">    tabSpec.setContent(<span class="keyword">new</span> FragmentTabHost.DummyTabFactory(<span class="keyword">this</span>.mContext));</span><br><span class="line">    String tag = tabSpec.getTag();</span><br><span class="line">    FragmentTabHost.TabInfo info = <span class="keyword">new</span> FragmentTabHost.TabInfo(tag, clss, args);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.mAttached) &#123;</span><br><span class="line">        info.fragment = <span class="keyword">this</span>.mFragmentManager.findFragmentByTag(tag);</span><br><span class="line">        <span class="keyword">if</span>(info.fragment != <span class="keyword">null</span> &amp;&amp; !info.fragment.isDetached()) &#123;</span><br><span class="line">            FragmentTransaction ft = <span class="keyword">this</span>.mFragmentManager.beginTransaction();</span><br><span class="line">            ft.detach(info.fragment);</span><br><span class="line">            ft.commit();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.mTabs.add(info);</span><br><span class="line">    <span class="keyword">this</span>.addTab(tabSpec);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>TabSpec用于设置tab的label及content，通过<strong>setIndicator(CharSequence label)/setIndicator(CharSequence label,Drawable icon)/setIndicator(View view)</strong>及<strong>setContent(int viewId)/setContent(TabHost.TabContentFactory contentFactory)</strong>完成对Tab的设置<br>开源中国客户端源码中对Tab 的设置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mainTab为一个枚举类，在之前的代码中被初始化为包含了各Tab相关信息的内容</span></span><br><span class="line">TabSpec tab = mTabHost.newTabSpec(getString(mainTab.getResName()));</span><br><span class="line"><span class="comment">//获取Tag栏中tag的布局</span></span><br><span class="line">View indicator = LayoutInflater.from(getApplicationContext())</span><br><span class="line">        .inflate(R.layout.tab_indicator, <span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//获取tag布局中的textview</span></span><br><span class="line">TextView title = (TextView) indicator.findViewById(R.id.tab_title);</span><br><span class="line"><span class="comment">//获取tag对应的图片</span></span><br><span class="line">Drawable drawable = <span class="keyword">this</span>.getResources().getDrawable(</span><br><span class="line">        mainTab.getResIcon());</span><br><span class="line"><span class="comment">//将图片至于tag的名字的上方</span></span><br><span class="line">title.setCompoundDrawablesWithIntrinsicBounds(<span class="keyword">null</span>, drawable, <span class="keyword">null</span>,</span><br><span class="line">        <span class="keyword">null</span>);</span><br><span class="line">...</span><br><span class="line">title.setText(getString(mainTab.getResName()));</span><br><span class="line">tab.setIndicator(indicator);</span><br><span class="line">tab.setContent(<span class="keyword">new</span> TabContentFactory() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">createTabContent</span><span class="params">(String tag)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> View(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//mTabHost在源码中为一个继承自FragmentTabHost的类对象</span></span><br><span class="line">mTabHost.addTab(tab, mainTab.getClz(), <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/10/28/FragmentTabHostDemo/" data-id="ciga5ogyp0003d0qdaydswj82" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-UI/">Android UI</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/21/My-First-Blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">markdown常用语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+ 
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-FragmentTabHostDemo" data-title="FragmentTabHost使用实例" data-url="http://yoursite.com/2015/10/28/FragmentTabHostDemo/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'alivebao'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  </section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-UI/">Android UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Others/">Others</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-UI/" style="font-size: 10px;">Android UI</a> <a href="/tags/Others/" style="font-size: 10px;">Others</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/10/28/FragmentTabHostDemo/">FragmentTabHost使用实例</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/21/My-First-Blog/">markdown常用语法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
