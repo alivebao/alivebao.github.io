@@ -1,0 +1,82 @@
+﻿<html>
+<head>
+<title>打灰机</title>
+<meta charset="utf-8"/>
+</head>
+<body style="overflow:hidden;">
+<audio id ="bombPlayer" src="sound/bomb.mp3" style="visibility:hidden;position:absolute;" autostart=false></audio>
+<audio id ="backPlayer" src="sound/back.mp3" style="visibility:hidden;position:absolute;" autoplay="autoplay" loop></audio>
+<div id="scoreRecorder">score:0</div>
+<div id="levelRecorder">level:0</div>
+
+<script>
+var bombControl = document.getElementById("bombPlayer");
+var backControl = document.getElementById("backPlayer");
+var planeColors = ["blue","green","orange","black","grey","grey"];
+var iWidth = document.body.clientWidth;
+var iHeight = document.body.clientHeight;
+var scoreRecorder = document.getElementById("scoreRecorder");
+var levelRecorder = document.getElementById("levelRecorder");
+var level = 1;
+var score = 0;
+function createPlane(color){
+    var plane = document.createElement("img");
+    var positionX = Math.random() * iWidth - plane.width;
+    var levelUpInterval = 5;
+    
+    plane.hit = false;
+    plane.color = color;
+    plane.src = "pic/" + color + ".png";
+    plane.onclick = function(){
+        plane.hit = true;
+        if(color === "grey"){
+            ++score;                      
+            if(score % levelUpInterval === 0)
+                ++level;
+            bombControl.currentTime = 0;
+            bombControl.play();
+            scoreRecorder.innerHTML = "score:" + score;
+            levelRecorder.innerHTML = "level:" + level;
+            document.body.removeChild(plane);
+        }
+        else{
+        }
+    };
+    plane.style = "position:absolute";
+    plane.width = 100;              
+    positionX <= 0 ? plane.style.left = 0 : plane.style.left = positionX;
+    positionX >= iWidth - plane.width ? plane.style.left = iWidth - plane.width: plane.style.left = positionX ;
+    
+    plane.fly = function(){
+        var pos = 0;
+        var id = setInterval(frame,1);
+        function frame(){
+            if(pos < iHeight){
+                ++pos;
+                plane.style.top = pos * level + "px";
+            }else{                
+                clearInterval(id);
+                if(plane.length > 0){
+                    document.body.removeChild(plane);
+                }
+                if(plane.color == "grey" && plane.hit == false)
+                    alert("Over");
+                delete plane;
+                plane = null;
+            }
+        }
+    }
+    return plane;
+}
+function Go(){
+    
+    var plane = new createPlane(planeColors[Math.floor(Math.random() * planeColors.length)]);    
+    document.body.appendChild(plane);
+    plane.fly();
+}
+window.onload = function(){
+    setInterval(Go,500 / level);
+}
+</script>
+</body>
+</html>
