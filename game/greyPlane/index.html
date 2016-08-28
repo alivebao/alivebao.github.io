@@ -20,18 +20,36 @@ body{
     display:none;    
     top:0;
 }
-#bombPlayer,#backPlayer{
+#bombPlayer,#backPlayer,#errorPlayer{
     visibility:hidden;
     position:absolute;
+}
+#record{
+    float:left;
 }
 #scoreRecorder,#levelRecorder{
     visibility:hidden;
 }
-#content{   
+#menu{   
     position:absolute;
     top:40%;
     width:100%;
     text-align:center;
+}
+#bloods{
+    visibility:hidden;
+}
+#bloods img{
+    float:right;
+    width:50px;
+}
+#Introduction{
+    position:absolute;
+    top:15%;
+    width:100%;
+    text-align:center;
+    font-size:40px;
+    color:white;
 }
 button{ 
     border-radius:50%;
@@ -54,20 +72,37 @@ button:active{
 </head>
 <body>
 <audio id ="bombPlayer" src="sound/bomb.mp3" autostart=false></audio>
-<audio id ="backPlayer" src="sound/back.mp3" autoplay="autoplay" loop></audio>
-<div id="scoreRecorder">score:0</div>
-<div id="levelRecorder">level:0</div>
-<div id="content">
+<audio id ="errorPlayer" src="sound/error.mp3" autostart=false></audio>
+<audio id ="backPlayer" src="sound/backa.mp3" autoplay="autoplay" loop></audio>
+<div id="record">
+    <div id="scoreRecorder">score:0</div>
+    <div id="levelRecorder">level:0</div>
+</div>
+<div id="bloods">
+    <img id="blood1" src="pic/blood.png"/>
+    <img id="blood2" src="pic/blood.png"/>
+    <img id="blood3" src="pic/blood.png"/>
+</div>
+
+<div id="Introduction">
+游戏介绍</br>
+只要打灰机就好啦</br>
+药瓶可以加血</br>
+玩的开心
+</div>
+<div id="menu">
      <button id="beginGame">开始游戏</button>
      <button id="shareGame">分享链接</button>
 </div>
-<div style="position:absolute;bottom:0px;"></div>
-<div style="clear:both">s</div>
 <script>
-var planeArr = {};
+var DropArr = {};
+var bloodImgArr = {};
+
 var bombControl = document.getElementById("bombPlayer");
+var errorControl = document.getElementById("errorPlayer");
 var backControl = document.getElementById("backPlayer");
-var planeColors = ["blue","green","orange","grey","grey"];
+
+var dropTypes = ["blue","green","orange","grey","grey","pill"];
 var iWidth = document.body.clientWidth;
 var iHeight = document.body.clientHeight;
 var scoreRecorder = document.getElementById("scoreRecorder");
@@ -77,46 +112,60 @@ var score = 0;
 var arrSize = 50;
 var planeClassName = "classPlane";
 var planeWidthParam = 5;
-var levelUpInterval = 3;
-function Plane(color){
-    this.color = color;    
+var levelUpInterval = 10;
+var currentBloods = 3;
+function DropedThing(descripType){
+    this.descripType = descripType;    
     this.running = false;
     this.animationID = -1;  
     
     this.element = document.createElement("img");
     this.element.className = planeClassName;
-    this.element.src = "pic/" + color + ".png";
+    this.element.src = "pic/" + descripType + ".png";
     this.element.width = iWidth / planeWidthParam;    
     this.element.style.top = 0;
     this.element.style.left = Math.random() * Math.floor(parseInt(iWidth) * (1 - 1.0 / planeWidthParam));
-    this.element.style.zIndex = color == "grey" ? "999" : "1"; 
+    this.element.style.zIndex = descripType == "grey" ? "999" : "1"; 
 
     var that = this;
     this.element.onclick = function(){
-        if(that.color === "grey"){
+        if(that.descripType === "grey"){
             ++score;                      
-            if(score % levelUpInterval === 0)
+            if(score % levelUpInterval === 0){
                 ++level;
+                levelUpInterval *= level * 10;
+            }
             bombControl.currentTime = 0;
             bombControl.play();
             scoreRecorder.innerHTML = "score:" + score;
             levelRecorder.innerHTML = "level:" + level;
             that.stopfly();
         }
+        else if(that.descripType == "pill"){
+            bombControl.currentTime = 0;
+            bombControl.play();
+            if(parseInt(currentBloods) < 3){
+                ++currentBloods;
+                bloodImgArr[currentBloods].src = "pic/blood.png";
+            }
+            that.stopfly();
+        }
         else{
-            location.replace(window.location.href + "?t=" + Math.random() * 10); 
-/*        
-            alert("游戏结束\n得分:"+
-            score+
-            "\n都说了是打灰机了，还打别的颜色的");
-            location.reload(true);
-  */      }
-    };
-    
+            errorControl.currentTime = 0;
+            errorControl.play();
+            if(currentBloods == 0){
+            console.log("Game Over");
+            //location.replace(window.location.href + "?t=" + Math.random() * 10); 
+            }else{
+                bloodImgArr[currentBloods].src = "pic/blooded.png";
+                --currentBloods;
+            }
+        }
+    };    
     return this;
 }
-Plane.prototype = {
-    construcor: Plane,
+DropedThing.prototype = {
+    construcor: DropedThing,
     fly: function(){
         var updateSpeed = 1;
         this.running = true;
@@ -129,14 +178,15 @@ Plane.prototype = {
                 that.element.style.top = (currentHeight + level) + "px";  
             }else{             
                 that.stopfly();
-                if(that.color == "grey"){   
-                    /*
-                      alert("游戏结束\n得分:"+
-                        score+
-                        "\n都说了是打灰机");
-                        
-                    location.reload(true);
-                    */
+                if(that.descripType == "grey"){ 
+                    if(currentBloods == 0){
+                        console.log("Game Over");
+                        //location.replace(window.location.href + "?t=" + Math.random() * 10); 
+                    }
+                    else{
+                        bloodImgArr[currentBloods].src = "pic/blooded.png";
+                        --currentBloods;
+                    }
                 }
             }   
         };        
@@ -146,27 +196,34 @@ Plane.prototype = {
         clearInterval(this.animationID);
         this.running = false;
         this.element.style.top = 0;
-        this.element.style.visibility = "hidden";
+        this.element.style.display = "none";
     }    
 }
 window.onload = function(){ 
     for(var i = 0 ; i < arrSize ; ++i){
-        planeArr[i] = new Plane(planeColors[Math.floor(Math.random() * planeColors.length)]);
-        document.body.appendChild(planeArr[i].element);
+        DropArr[i] = new DropedThing(dropTypes[Math.floor(Math.random() * dropTypes.length)]);
+        document.body.appendChild(DropArr[i].element);
     }    
+    for(var i = 1 ; i <= currentBloods ; ++i){
+        bloodImgArr[i] = document.getElementById("blood"+i);
+    }
+    
 }
 document.getElementById("beginGame").addEventListener("click", function(){    
     var orignCreateInterval = 500;
     
     document.getElementById("scoreRecorder").style.visibility = "visible";
     document.getElementById("levelRecorder").style.visibility = "visible";
+    document.getElementById("bloods").style.visibility = "visible";
+    
     document.getElementById("beginGame").style.visibility = "hidden";
     document.getElementById("shareGame").style.visibility = "hidden";
+    document.getElementById("Introduction").style.visibility = "hidden";
    
     setInterval(function(){
         var r = Math.floor(Math.random() * arrSize);
-        if(planeArr[r].running != true)
-            planeArr[r].fly();
+        if(DropArr[r].running != true)
+            DropArr[r].fly();
     },orignCreateInterval / level);
     
 });
