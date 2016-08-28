@@ -2,8 +2,23 @@
 <head>
 <title>打灰机</title>
 <meta charset="utf-8"/>
+<style>
+*{
+    padding:0;
+    margin:0;
+}
+#scoreRecorder, #levelRecorder{
+    color:white;
+    font-size:50px;
+}
+body{
+    background:url('pic/back.jpg');
+    background-color:black;
+    overflow:hidden;
+}
+</style>
 </head>
-<body style="overflow:hidden;">
+<body>
 <audio id ="bombPlayer" src="sound/bomb.mp3" style="visibility:hidden;position:absolute;" autostart=false></audio>
 <audio id ="backPlayer" src="sound/back.mp3" style="visibility:hidden;position:absolute;" autoplay="autoplay" loop></audio>
 <div id="scoreRecorder">score:0</div>
@@ -12,7 +27,7 @@
 <script>
 var bombControl = document.getElementById("bombPlayer");
 var backControl = document.getElementById("backPlayer");
-var planeColors = ["blue","green","orange","black","grey","grey"];
+var planeColors = ["blue","green","orange","grey","grey"];
 var iWidth = document.body.clientWidth;
 var iHeight = document.body.clientHeight;
 var scoreRecorder = document.getElementById("scoreRecorder");
@@ -43,7 +58,7 @@ function createPlane(color){
         }
     };
     plane.style = "position:absolute";
-    plane.width = 100;              
+    plane.width = iWidth / 6;              
     positionX <= 0 ? plane.style.left = 0 : plane.style.left = positionX;
     positionX >= iWidth - plane.width ? plane.style.left = iWidth - plane.width: plane.style.left = positionX ;
     
