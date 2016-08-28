@@ -1,0 +1,22 @@
+﻿<script>
+function TestObj(){
+    this.a = "A";
+}
+TestObj.prototype = {
+    constructor: TestObj,
+    getA: function(){
+        return this.a;
+    },
+    setA: function(){
+        var that = this;
+        var readA = function(){
+            console.log(that.a);
+            that.a = "XC";
+            console.log(that.a)
+        }
+        readA();
+    }
+}
+temp = new TestObj();
+temp.setA();
+</script>

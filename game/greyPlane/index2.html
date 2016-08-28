@@ -12,8 +12,10 @@
     font-size:50px;
 }
 body{
-    background:url('pic/back.jpg') no-repeat;
+    background:url('pic/back.jpg');
     background-color:black;
+    overflow-y:hidden;
+    height:100%;
 }
 .classPlane{
     position:absolute;
@@ -54,15 +56,13 @@ button:active{
 </head>
 <body>
 <audio id ="bombPlayer" src="sound/bomb.mp3" autostart=false></audio>
-<audio id ="backPlayer" src="sound/back.mp3" autoplay="autoplay" loop></audio>
+<audio id ="backPlayer" src="sound/backa.mp3" autoplay="autoplay" loop></audio>
 <div id="scoreRecorder">score:0</div>
 <div id="levelRecorder">level:0</div>
 <div id="content">
      <button id="beginGame">开始游戏</button>
      <button id="shareGame">分享链接</button>
 </div>
-<div style="position:absolute;bottom:0px;"></div>
-<div style="clear:both">s</div>
 <script>
 var planeArr = {};
 var bombControl = document.getElementById("bombPlayer");
@@ -77,23 +77,28 @@ var score = 0;
 var arrSize = 50;
 var planeClassName = "classPlane";
 var planeWidthParam = 5;
-var levelUpInterval = 3;
 function Plane(color){
-    this.color = color;    
-    this.running = false;
-    this.animationID = -1;  
-    
+    var positionX = Math.random() * iWidth;
+
     this.element = document.createElement("img");
     this.element.className = planeClassName;
     this.element.src = "pic/" + color + ".png";
-    this.element.width = iWidth / planeWidthParam;    
+    this.element.width = iWidth / planeWidthParam;     
     this.element.style.top = 0;
-    this.element.style.left = Math.random() * Math.floor(parseInt(iWidth) * (1 - 1.0 / planeWidthParam));
-    this.element.style.zIndex = color == "grey" ? "999" : "1"; 
-
-    var that = this;
-    this.element.onclick = function(){
-        if(that.color === "grey"){
+    this.element.style.left = positionX <= 0 ? 0 : positionX;
+    this.element.style.left = positionX >= iWidth - this.width ? iWidth - this.width : positionX;
+    this.element.style.zIndex = color == "grey" ? "999" : "1";
+    
+    this.color = color;    
+    this.running = false;
+    this.animationID = -1;   
+    
+    return this;
+}
+Plane.prototype = {
+    construcor: Plane,
+    onclick: function(){
+        if(color === "grey"){
             ++score;                      
             if(score % levelUpInterval === 0)
                 ++level;
@@ -101,74 +106,74 @@ function Plane(color){
             bombControl.play();
             scoreRecorder.innerHTML = "score:" + score;
             levelRecorder.innerHTML = "level:" + level;
-            that.stopfly();
+            this.stopfly();
         }
-        else{
-            location.replace(window.location.href + "?t=" + Math.random() * 10); 
-/*        
+        else{        
             alert("游戏结束\n得分:"+
             score+
             "\n都说了是打灰机了，还打别的颜色的");
             location.reload(true);
-  */      }
-    };
-    
-    return this;
-}
-Plane.prototype = {
-    construcor: Plane,
+        }
+    },
     fly: function(){
-        var updateSpeed = 1;
         this.running = true;
         this.element.style.display = "inline";     
 
         var that = this;
+        var pos = 0;
         var updatePosition = function(){
             var currentHeight = parseInt(that.element.style.top);
             if(currentHeight < iHeight){ 
-                that.element.style.top = (currentHeight + level) + "px";  
+                that.element.style.top = (currentHeight + 10 * level) + "px";  
+                console.log(that.element.style.top);
             }else{             
                 that.stopfly();
                 if(that.color == "grey"){   
-                    /*
+                    console.log("Miss grey");
+                    
                       alert("游戏结束\n得分:"+
                         score+
                         "\n都说了是打灰机");
-                        
                     location.reload(true);
-                    */
                 }
             }   
         };        
-        this.animationID = setInterval(updatePosition,updateSpeed);
+        this.animationID = setInterval(updatePosition,10);
     },
     stopfly: function(){
         clearInterval(this.animationID);
         this.running = false;
         this.element.style.top = 0;
-        this.element.style.visibility = "hidden";
-    }    
+        this.element.style.display = "none";
+    }
+    
 }
-window.onload = function(){ 
+window.onload = function(){
     for(var i = 0 ; i < arrSize ; ++i){
         planeArr[i] = new Plane(planeColors[Math.floor(Math.random() * planeColors.length)]);
         document.body.appendChild(planeArr[i].element);
     }    
 }
 document.getElementById("beginGame").addEventListener("click", function(){    
-    var orignCreateInterval = 500;
+    var orignCreateInterval = 1000;
     
     document.getElementById("scoreRecorder").style.visibility = "visible";
     document.getElementById("levelRecorder").style.visibility = "visible";
     document.getElementById("beginGame").style.visibility = "hidden";
     document.getElementById("shareGame").style.visibility = "hidden";
    
+   var r = Math.floor(Math.random() * arrSize);
+        if(planeArr[r].running != true)
+            planeArr[r].fly();
+    
     setInterval(function(){
         var r = Math.floor(Math.random() * arrSize);
         if(planeArr[r].running != true)
             planeArr[r].fly();
     },orignCreateInterval / level);
     
+});
+document.getElementById("shareGame").addEventListener("click", function(){
 });
 </script>
 </body>
