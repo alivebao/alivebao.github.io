@@ -73,7 +73,7 @@ button:active{
 <body>
 <audio id ="bombPlayer" src="sound/bomb.mp3" autostart=false></audio>
 <audio id ="errorPlayer" src="sound/error.mp3" autostart=false></audio>
-<audio id ="backPlayer" src="sound/back.mp3" autoplay="autoplay" loop></audio>
+<audio id ="backPlayer" src="sound/backa.mp3" autoplay="autoplay" loop></audio>
 <div id="record">
     <div id="scoreRecorder">score:0</div>
     <div id="levelRecorder">level:0</div>
@@ -114,6 +114,7 @@ var planeClassName = "classPlane";
 var planeWidthParam = 5;
 var levelUpInterval = 10;
 var currentBloods = 3;
+var gameIntervalId;
 function DropedThing(descripType){
     this.descripType = descripType;    
     this.running = false;
@@ -124,8 +125,8 @@ function DropedThing(descripType){
     this.element.src = "pic/" + descripType + ".png";
     this.element.width = iWidth / planeWidthParam;    
     this.element.style.top = 0;
-    this.element.style.left = Math.random() * Math.floor(parseInt(iWidth) * (1 - 1.0 / planeWidthParam));
-    this.element.style.zIndex = descripType == "grey" ? "999" : "1"; 
+    this.element.style.left = Math.random() * Math.floor(parseInt(iWidth, 10) * (1 - 1.0 / planeWidthParam));
+    this.element.style.zIndex = descripType == "grey" ? "70" : "1"; 
 
     var that = this;
     this.element.onclick = function(){
@@ -144,7 +145,7 @@ function DropedThing(descripType){
         else if(that.descripType == "pill"){
             bombControl.currentTime = 0;
             bombControl.play();
-            if(parseInt(currentBloods) < 3){
+            if(parseInt(currentBloods, 10) < 3){
                 ++currentBloods;
                 bloodImgArr[currentBloods].src = "pic/blood.png";
             }
@@ -155,6 +156,7 @@ function DropedThing(descripType){
             errorControl.play();
             if(currentBloods == 0){
             console.log("Game Over");
+            createDialog(score);
             //location.replace(window.location.href + "?t=" + Math.random() * 10); 
             }else{
                 bloodImgArr[currentBloods].src = "pic/blooded.png";
@@ -173,7 +175,7 @@ DropedThing.prototype = {
 
         var that = this;
         var updatePosition = function(){
-            var currentHeight = parseInt(that.element.style.top);
+            var currentHeight = parseInt(that.element.style.top, 10);
             if(currentHeight < iHeight){ 
                 that.element.style.top = (currentHeight + level) + "px";  
             }else{             
@@ -181,6 +183,7 @@ DropedThing.prototype = {
                 if(that.descripType == "grey"){ 
                     if(currentBloods == 0){
                         console.log("Game Over");
+                        createDialog(score);
                         //location.replace(window.location.href + "?t=" + Math.random() * 10); 
                     }
                     else{
@@ -199,16 +202,7 @@ DropedThing.prototype = {
         this.element.style.display = "none";
     }    
 }
-window.onload = function(){ 
-    for(var i = 0 ; i < arrSize ; ++i){
-        DropArr[i] = new DropedThing(dropTypes[Math.floor(Math.random() * dropTypes.length)]);
-        document.body.appendChild(DropArr[i].element);
-    }    
-    for(var i = 1 ; i <= currentBloods ; ++i){
-        bloodImgArr[i] = document.getElementById("blood"+i);
-    }
-    
-}
+
 document.getElementById("beginGame").addEventListener("click", function(){    
     var orignCreateInterval = 500;
     
@@ -220,13 +214,96 @@ document.getElementById("beginGame").addEventListener("click", function(){
     document.getElementById("shareGame").style.visibility = "hidden";
     document.getElementById("Introduction").style.visibility = "hidden";
    
-    setInterval(function(){
+    gameIntervalId = setInterval(function(){
         var r = Math.floor(Math.random() * arrSize);
         if(DropArr[r].running != true)
             DropArr[r].fly();
     },orignCreateInterval / level);
     
 });
+function createDialog(point){
+    var divBackground = document.createElement("div");
+    var divDialog = document.createElement("div");    
+    var divHead = document.createElement("div");    
+    var divContent = document.createElement("div");    
+    //Add background of dialog
+    divBackground.style.position = "absolute";
+    divBackground.style.background = "#000000";
+    divBackground.style.width = "100%";
+    divBackground.style.height = "100%";
+    divBackground.style.left = "0px";
+    divBackground.style.top = "0px";
+    divBackground.style.zIndex = "99";
+    divBackground.style.opacity = "0.6";    
+    document.body.appendChild(divBackground);
+    //ceate dialog
+    var dialogHeight = 350;
+    var dialogWidth = 400;
+    divDialog.style.width = dialogWidth + "px";
+    divDialog.style.height = dialogHeight + "px";        
+    divDialog.style.position = "absolute";
+    divDialog.style.border = "1px solid #C0D7FA";
+    divDialog.style.borderRight = "2px outset #DEDEDE";
+    divDialog.style.borderLeft = "2px outset #DEDEDE";
+    divDialog.style.left = ((document.body.clientWidth / 2) - (dialogWidth / 2)) + "px";
+    divDialog.style.top = (document.body.scrollTop + (document.body.clientHeight / 2) - (dialogHeight / 2)) + "px";
+    divDialog.style.zIndex = "100";
+    //create head
+    divHead.appendChild(document.createTextNode("游戏结束"));
+    divHead.style.width = "100%";
+    divHead.style.height = "25px";
+    divHead.style.lineHeight = "25px";
+    divHead.style.fontSize = "14px";        
+    divHead.style.fontWeight = "bold";
+    divHead.style.borderBottom = "1px outset #8989FF";
+    divHead.style.color = "white";
+    divHead.style.textIndent = "10px";
+    divHead.style.backgroundColor = "blue";
+    divDialog.appendChild(divHead);
+    //create content
+    divContent.style.padding = "15px";
+    divContent.style.fontSize = "50px";
+    divContent.style.height = parseInt(dialogHeight - 55) + "px";
+    divContent.style.backgroundColor = "#ffffff";
+    divContent.style.textAlign = "center";
+    divContent.innerHTML = "哎呀呀<br />游戏结束了" + "<br />最终得分:"+ point + "<br />";
+    divDialog.appendChild(divContent);
+    //create close button
+    var closeButton = document.createElement("img");
+    closeButton.style.cursor = "hand";
+    closeButton.setAttribute("alt", "OK");
+    closeButton.style.position = "absolute";
+    closeButton.style.bottom = "10px";
+    closeButton.style.width = "50%";
+    closeButton.style.height = "20%";
+    closeButton.style.left = "25%"
+    closeButton.onclick = function() {
+        location.replace(window.location.href + "?t=" + Math.random() * 10); 
+    };
+    divContent.appendChild(closeButton);
+    divDialog.focus();       
+    document.body.appendChild(divDialog);
+    //Game over
+    stopGame(gameIntervalId);
+}
+function stopGame(gameIntervalId){
+    clearInterval(gameIntervalId);
+    for(var i = 0 ; i < arrSize ; ++i){
+        DropArr[i].stopfly();
+    }
+}
+window.onload = function(){ 
+    //createDialog(score);
+
+    for(var i = 0 ; i < arrSize ; ++i){
+        DropArr[i] = new DropedThing(dropTypes[Math.floor(Math.random() * dropTypes.length)]);
+        document.body.appendChild(DropArr[i].element);
+    }    
+    for(var i = 1 ; i <= currentBloods ; ++i){
+        bloodImgArr[i] = document.getElementById("blood"+i);
+    } 
+    
+}
 </script>
 </body>
 </html>
