@@ -90,6 +90,20 @@ button:active{
 药瓶可以加血</br>
 玩的开心
 </div>
+<table style="color:white;display:none;">
+    <tr>
+        <th>Month</th>
+        <th>Savings</th>
+    </tr>
+    <tr>
+        <td>January</td>
+        <td>$100</td>
+    </tr>
+    <tr>
+        <td>January</td>
+        <td>$100</td>
+    </tr>
+</table>
 <div id="menu">
      <button id="beginGame">开始游戏</button>
      <button id="shareGame">分享链接</button>
@@ -151,12 +165,12 @@ function DropedThing(descripType){
             }
             that.stopfly();
         }
-        else{
+        else{   
             errorControl.currentTime = 0;
             errorControl.play();
             if(currentBloods == 0){
             console.log("Game Over");
-            createDialog(score);
+            (new GameDialog(score,false)).show();
             //location.replace(window.location.href + "?t=" + Math.random() * 10); 
             }else{
                 bloodImgArr[currentBloods].src = "pic/blooded.png";
@@ -183,7 +197,7 @@ DropedThing.prototype = {
                 if(that.descripType == "grey"){ 
                     if(currentBloods == 0){
                         console.log("Game Over");
-                        createDialog(score);
+                        (new GameDialog(score,false)).show();
                         //location.replace(window.location.href + "?t=" + Math.random() * 10); 
                     }
                     else{
@@ -216,74 +230,111 @@ document.getElementById("beginGame").addEventListener("click", function(){
    
     gameIntervalId = setInterval(function(){
         var r = Math.floor(Math.random() * arrSize);
+        if(DropArr[r].descripType == "pill" && currentBloods == 3)
+            return;
         if(DropArr[r].running != true)
             DropArr[r].fly();
     },orignCreateInterval / level);
     
 });
-function createDialog(point){
-    var divBackground = document.createElement("div");
-    var divDialog = document.createElement("div");    
-    var divHead = document.createElement("div");    
-    var divContent = document.createElement("div");    
-    //Add background of dialog
-    divBackground.style.position = "absolute";
-    divBackground.style.background = "#000000";
-    divBackground.style.width = "100%";
-    divBackground.style.height = "100%";
-    divBackground.style.left = "0px";
-    divBackground.style.top = "0px";
-    divBackground.style.zIndex = "99";
-    divBackground.style.opacity = "0.6";    
-    document.body.appendChild(divBackground);
-    //ceate dialog
+function GameDialog(point,breakRecord){
     var dialogHeight = 350;
     var dialogWidth = 400;
-    divDialog.style.width = dialogWidth + "px";
-    divDialog.style.height = dialogHeight + "px";        
-    divDialog.style.position = "absolute";
-    divDialog.style.border = "1px solid #C0D7FA";
-    divDialog.style.borderRight = "2px outset #DEDEDE";
-    divDialog.style.borderLeft = "2px outset #DEDEDE";
-    divDialog.style.left = ((document.body.clientWidth / 2) - (dialogWidth / 2)) + "px";
-    divDialog.style.top = (document.body.scrollTop + (document.body.clientHeight / 2) - (dialogHeight / 2)) + "px";
-    divDialog.style.zIndex = "100";
+    this.breakRecord = breakRecord;
+
+    this.divBackground = document.createElement("div");
+    this.divDialog = document.createElement("div");    
+    this.divHead = document.createElement("div");    
+    this.divContent = document.createElement("div");    
+    this.closeButton = document.createElement("img");
+    //Add background of dialog
+    this.divBackground.style.position = "absolute";
+    this.divBackground.style.background = "#000000";
+    this.divBackground.style.width = "100%";
+    this.divBackground.style.height = "100%";
+    this.divBackground.style.left = "0px";
+    this.divBackground.style.top = "0px";
+    this.divBackground.style.zIndex = "99";
+    this.divBackground.style.opacity = "0.6";  
+    //ceate dialog    
+    this.divDialog.style.width = dialogWidth + "px";
+    this.divDialog.style.height = dialogHeight + "px";        
+    this.divDialog.style.position = "absolute";
+    this.divDialog.style.border = "1px solid #C0D7FA";
+    this.divDialog.style.borderRight = "2px outset #DEDEDE";
+    this.divDialog.style.borderLeft = "2px outset #DEDEDE";
+    this.divDialog.style.left = ((document.body.clientWidth / 2) - (dialogWidth / 2)) + "px";
+    this.divDialog.style.top = (document.body.scrollTop + (document.body.clientHeight / 2) - (dialogHeight / 2)) + "px";
+    this.divDialog.style.zIndex = "100";
     //create head
-    divHead.appendChild(document.createTextNode("游戏结束"));
-    divHead.style.width = "100%";
-    divHead.style.height = "25px";
-    divHead.style.lineHeight = "25px";
-    divHead.style.fontSize = "14px";        
-    divHead.style.fontWeight = "bold";
-    divHead.style.borderBottom = "1px outset #8989FF";
-    divHead.style.color = "white";
-    divHead.style.textIndent = "10px";
-    divHead.style.backgroundColor = "blue";
-    divDialog.appendChild(divHead);
+    this.divHead.appendChild(document.createTextNode("游戏结束"));
+    this.divHead.style.width = "100%";
+    this.divHead.style.height = "25px";
+    this.divHead.style.lineHeight = "25px";
+    this.divHead.style.fontSize = "14px";        
+    this.divHead.style.fontWeight = "bold";
+    this.divHead.style.borderBottom = "1px outset #8989FF";
+    this.divHead.style.color = "white";
+    this.divHead.style.textIndent = "10px";
+    this.divHead.style.backgroundColor = "blue";    
     //create content
-    divContent.style.padding = "15px";
-    divContent.style.fontSize = "50px";
-    divContent.style.height = parseInt(dialogHeight - 55) + "px";
-    divContent.style.backgroundColor = "#ffffff";
-    divContent.style.textAlign = "center";
-    divContent.innerHTML = "哎呀呀<br />游戏结束了" + "<br />最终得分:"+ point + "<br />";
-    divDialog.appendChild(divContent);
+    this.divContent.style.padding = "15px";
+    this.divContent.style.fontSize = "50px";
+    this.divContent.style.height = parseInt(dialogHeight - 55) + "px";
+    this.divContent.style.backgroundColor = "#ffffff";
+    this.divContent.style.textAlign = "center";
+    this.divContent.innerHTML = "哎呀呀<br />游戏结束了<br />最终得分:"+ point + "<br />";    
+    //check if add input 
+    if(this.breakRecord){
+        console.log("break record");
+        this.divContent.innerHTML = "恭喜<br />破纪录了<br />最终得分:" + point +"<br />"
+        this.divInputContainer = document.createElement("div");
+        this.divHint = document.createElement("span");
+        this.divHint.innerHTML = "姓名:"
+        this.divHint.style.fontSize = "40px";
+        
+        this.divInput = document.createElement("input");
+        this.divInput.setAttribute("placeholder", "无名氏");
+        this.divInput.style.fontSize = "40px";
+        this.divInput.style.width = "60%";
+        
+        this.divInputContainer.appendChild(this.divHint);
+        this.divInputContainer.appendChild(this.divInput);
+        
+        this.divContent.appendChild(this.divInputContainer);
+    }
     //create close button
-    var closeButton = document.createElement("img");
-    closeButton.style.cursor = "hand";
-    closeButton.setAttribute("alt", "OK");
-    closeButton.style.position = "absolute";
-    closeButton.style.bottom = "10px";
-    closeButton.style.width = "50%";
-    closeButton.style.height = "20%";
-    closeButton.style.left = "25%"
-    closeButton.onclick = function() {
-        location.replace(window.location.href + "?t=" + Math.random() * 10); 
+    this.closeButton.style.cursor = "hand";
+    this.closeButton.setAttribute("alt", "OK");
+    this.closeButton.style.position = "absolute";
+    this.closeButton.style.bottom = "10px";
+    this.closeButton.style.width = "50%";
+    this.closeButton.style.height = "20%";
+    this.closeButton.style.left = "25%";
+    var that = this;
+    if(this.breakRecord){
+        this.closeButton.onclick = function() {
+            var inputName = that.divInput.value;
+            if(!inputName)
+                inputName = "无名氏";
+            location.replace(window.location.href + "?t=" + Math.random() * 10); 
+        }
+    }
+    else{
+        that.closeButton.onclick = function() {
+            location.replace(window.location.href + "?t=" + Math.random() * 10); 
+        }
     };
-    divContent.appendChild(closeButton);
-    divDialog.focus();       
-    document.body.appendChild(divDialog);
-    //Game over
+//    stopGame(gameIntervalId);
+}
+GameDialog.prototype.show = function(){
+    document.body.appendChild(this.divBackground);
+    this.divDialog.appendChild(this.divHead);
+    this.divContent.appendChild(this.closeButton);
+    this.divDialog.appendChild(this.divContent);
+    this.divDialog.focus();       
+    document.body.appendChild(this.divDialog);
+    
     stopGame(gameIntervalId);
 }
 function stopGame(gameIntervalId){
@@ -293,8 +344,7 @@ function stopGame(gameIntervalId){
     }
 }
 window.onload = function(){ 
-    //createDialog(score);
-
+    backControl.volume = 0.1;
     for(var i = 0 ; i < arrSize ; ++i){
         DropArr[i] = new DropedThing(dropTypes[Math.floor(Math.random() * dropTypes.length)]);
         document.body.appendChild(DropArr[i].element);
@@ -302,7 +352,7 @@ window.onload = function(){
     for(var i = 1 ; i <= currentBloods ; ++i){
         bloodImgArr[i] = document.getElementById("blood"+i);
     } 
-    
+   
 }
 </script>
 </body>
