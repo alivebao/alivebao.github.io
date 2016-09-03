@@ -27,7 +27,7 @@ function GameDialog(point){
     this.divDialog.style.top = (document.body.scrollTop + (document.body.clientHeight / 2) - (dialogHeight / 2)) + "px";
     this.divDialog.style.zIndex = "100";
     //create head
-    this.divHead.appendChild(document.createTextNode("游戏结束"));
+    this.divHead.appendChild(document.createTextNode("Game Over"));
     this.divHead.style.width = "100%";
     this.divHead.style.height = "25px";
     this.divHead.style.lineHeight = "25px";
@@ -43,7 +43,7 @@ function GameDialog(point){
     this.divContent.style.height = parseInt(dialogHeight - 55) + "px";
     this.divContent.style.backgroundColor = "#ffffff";
     this.divContent.style.textAlign = "center";
-    this.divContent.innerHTML = "哎呀呀<br />游戏结束了<br />最终得分:"+ point + "<br />";    
+    this.divContent.innerHTML = "&#x54CE;&#x5440;&#x5440;<br />&#x6E38;&#x620F;&#x7ED3;&#x675F;&#x4E86;<br />&#x6700;&#x7EC8;&#x5F97;&#x5206;:"+ point + "<br />";    
     //create close button
     this.closeButton.style.cursor = "hand";
     this.closeButton.setAttribute("alt", "OK");
