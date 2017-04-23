@@ -28,7 +28,7 @@
 
 &amp;lt;!-- tocstop --&amp;gt;">
 <meta property="og:image" content="http://7xv88e.com1.z0.glb.clouddn.com/markdownPreview.PNG">
-<meta property="og:updated_time" content="2017-03-12T11:26:11.630Z">
+<meta property="og:updated_time" content="2017-03-12T11:40:17.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React实现markdown编辑器">
 <meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;
@@ -137,11 +137,11 @@
 <li><p>&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x663E;&#x793A;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x672C;&#x6846;</p>
 <figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">createMarkdownPreview() {</span><br><span class="line">  return {__html: marked(this.<span class="keyword">state</span>.value)};</span><br><span class="line">}</span><br><span class="line">...</span><br><span class="line">render() {</span><br><span class="line">  return (...</span><br><span class="line">    <span class="variable">&lt;div dangerouslySetInnerHTML={this.createMarkdownPreview()}&gt;</span><span class="variable">&lt;/div&gt;</span></span><br><span class="line">  ...)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>&#x6E32;&#x67D3;&#x5143;&#x7D20;</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">...</span></span><br><span class="line">ReactDOM<span class="built_in">.</span>render(</span><br><span class="line">  &lt;MarkdownPreview /&gt;,</span><br><span class="line">  document<span class="built_in">.</span>getElementById(<span class="string">&apos;content&apos;</span>)</span><br><span class="line">);</span><br><span class="line"><span class="attribute">...</span></span><br></pre></td></tr></table></figure>
-</li>
 <li><p>this&#x7ED1;&#x5B9A;-&#x522B;&#x5FD8;&#x4E86;&#x624B;&#x52A8;&#x901A;&#x8FC7;bind&#x7ED1;&#x5B9A;this</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="constructor"><span class="keyword">constructor</span>(props)</span>{</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">this</span>.handleChange = <span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.createMarkdownPreview = <span class="keyword">this</span>.createMarkdownPreview.bind(<span class="keyword">this</span>);</span><br><span class="line">  ...</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6E32;&#x67D3;&#x5143;&#x7D20;</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">...</span></span><br><span class="line">ReactDOM<span class="built_in">.</span>render(</span><br><span class="line">  &lt;MarkdownPreview /&gt;,</span><br><span class="line">  document<span class="built_in">.</span>getElementById(<span class="string">&apos;content&apos;</span>)</span><br><span class="line">);</span><br><span class="line"><span class="attribute">...</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h2><ul>
@@ -154,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/15/react-markdown/" data-id="cj06lqrns00080gwaga9iomhz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/12/15/react-markdown/" data-id="cj1u3ypyp0008fcwano3hwvwz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
@@ -214,7 +214,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-UI/">Android UI</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA多线程/">JAVA多线程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-UI/">Android UI</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA多线程/">JAVA多线程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/d3/">d3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -223,7 +223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-UI/" style="font-size: 16.67px;">Android UI</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/Frontend/" style="font-size: 20px;">Frontend</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JAVA多线程/" style="font-size: 13.33px;">JAVA多线程</a> <a href="/tags/JS/" style="font-size: 13.33px;">JS</a> <a href="/tags/React/" style="font-size: 13.33px;">React</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+      <a href="/tags/Android-UI/" style="font-size: 16.67px;">Android UI</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/Frontend/" style="font-size: 20px;">Frontend</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JAVA多线程/" style="font-size: 13.33px;">JAVA多线程</a> <a href="/tags/JS/" style="font-size: 13.33px;">JS</a> <a href="/tags/React/" style="font-size: 13.33px;">React</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
     </div>
   </div>
 
@@ -232,7 +232,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -242,6 +242,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/04/22/d3-study/">d3入门与实战</a>
+          </li>
         
           <li>
             <a href="/2017/03/11/React-Game-of-Life/">React实现生命游戏</a>
@@ -257,10 +261,6 @@
         
           <li>
             <a href="/2016/12/15/react-markdown/">React实现markdown编辑器</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/11/angular-directive-recursion-tree/">Angular directive递归实现目录树结构</a>
           </li>
         
       </ul>
