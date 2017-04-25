@@ -3,21 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Angular directive递归实现目录树结构 | 缪运泽</title>
+  <title>ES6重点小结 | 缪运泽</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;lt;!-- toc --&amp;gt;
+
+let &amp;amp; const
+变量的解构赋值
+
 &amp;lt;!-- tocstop --&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Angular directive递归实现目录树结构">
-<meta property="og:url" content="http://yoursite.com/2016/12/11/angular-directive-recursion-tree/index.html">
+<meta property="og:title" content="ES6重点小结">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/es6-study/index.html">
 <meta property="og:site_name" content="缪运泽">
 <meta property="og:description" content="&amp;lt;!-- toc --&amp;gt;
+
+let &amp;amp; const
+变量的解构赋值
+
 &amp;lt;!-- tocstop --&amp;gt;">
-<meta property="og:image" content="http://7xv88e.com1.z0.glb.clouddn.com/ng-directive-recur--demo.PNG">
-<meta property="og:updated_time" content="2016-12-14T23:53:05.505Z">
+<meta property="og:updated_time" content="2017-04-24T23:53:22.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular directive递归实现目录树结构">
+<meta name="twitter:title" content="ES6重点小结">
 <meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;
+
+let &amp;amp; const
+变量的解构赋值
+
 &amp;lt;!-- tocstop --&amp;gt;">
   
     <link rel="alternative" href="/atom.xml" title="缪运泽" type="application/atom+xml">
@@ -68,10 +79,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-angular-directive-recursion-tree" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-es6-study" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/11/angular-directive-recursion-tree/" class="article-date">
-  <time datetime="2016-12-11T03:18:16.000Z" itemprop="datePublished">2016-12-11</time>
+    <a href="/2017/04/25/es6-study/" class="article-date">
+  <time datetime="2017-04-24T23:49:18.000Z" itemprop="datePublished">2017-04-25</time>
 </a>
     
   </div>
@@ -82,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Angular directive递归实现目录树结构
+      ES6重点小结
     </h1>
   
 
@@ -91,25 +102,38 @@
     <div class="article-entry" itemprop="articleBody">
       
         <!-- toc -->
+<ul>
+<li><a href="#let-const">let &amp; const</a></li>
+<li><a href="#&#x53D8;&#x91CF;&#x7684;&#x89E3;&#x6784;&#x8D4B;&#x503C;">&#x53D8;&#x91CF;&#x7684;&#x89E3;&#x6784;&#x8D4B;&#x503C;</a></li>
+</ul>
 <!-- tocstop -->
 <a id="more"></a>
-<p><img src="http://7xv88e.com1.z0.glb.clouddn.com/ng-directive-recur--demo.PNG" alt="&#x6548;&#x679C;&#x56FE;"><br><a href="https://codepen.io/19920612/pen/rWrRjy" target="_blank" rel="external">&#x5728;&#x7EBF;&#x9884;&#x89C8;&amp;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</a><br>&#x91CD;&#x70B9;&#xFF1A;</p>
-<ol>
-<li><p>&#x6574;&#x68F5;&#x76EE;&#x5F55;&#x6811;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x901A;&#x8FC7;&#x5D4C;&#x5957;&#x5B8C;&#x6210;&#xFF0C;&#x4E3B;&#x8981;&#x5728;&#x4E8E;&#x5BF9;treeItem.html&#x7684;&#x9012;&#x5F52;&#x4F7F;&#x7528;</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/ng-template&quot;</span> id=<span class="string">&quot;treeView.html&quot;</span>&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span> <span class="attribute">ng-repeat</span>=<span class="value">&quot;item in treeData.children&quot;</span> <span class="attribute">ng-include</span>=<span class="value">&quot;&apos;treeItem.html&apos;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">&quot;text/ng-template&quot;</span> <span class="attribute">id</span>=<span class="value">&quot;treeItem.html&quot;</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">&quot;color-indictor&quot;</span> <span class="attribute">ng-class</span>=<span class="value">&quot;{&apos;leaf-node&apos;: isLeaf(item), &apos;expand-node&apos;: !isLeaf(item) &amp;&amp; item.isExpand, &apos;unexpand-node&apos;: !isLeaf(item) &amp;&amp; !item.isExpand}&quot;</span> <span class="attribute">ng-click</span>=<span class="value">&quot;toggleExpandStatus(item)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">span</span>&gt;</span></span><span class="expression">{{<span class="variable">item.name</span>}}</span><span class="xml"><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">ng-if</span>=<span class="value">&quot;!isLeaf(item)&quot;</span> <span class="attribute">ng-show</span>=<span class="value">&quot;item.isExpand&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span> <span class="attribute">ng-repeat</span>=<span class="value">&quot;item in item.children&quot;</span> <span class="attribute">ng-include</span>=<span class="value">&quot;&apos;treeItem.html&apos;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"></span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="let-const">let &amp; const</h1><p>let&#x548C;const&#x662F;ES6&#x65B0;&#x589E;&#x7684;&#x6307;&#x4EE4;&#x3002;<br>&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;-&#x4EC5;&#x5728;&#x6240;&#x5728;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x5185;&#x6709;&#x6548;&#x3002;<br>&#x4E0D;&#x5B58;&#x5728;&#x53D8;&#x91CF;&#x63D0;&#x5347;-&#x53D8;&#x91CF;&#x4EC5;&#x5728;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#x4E4B;&#x540E;&#x624D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;<br>&#x6682;&#x65F6;&#x6027;&#x6B7B;&#x533A;(temporal dead zone, TDZ)-&#x5728;&#x4EE3;&#x7801;&#x5757;&#x5185;&#xFF0C;&#x4F7F;&#x7528;let&#x547D;&#x4EE4;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x4E4B;&#x524D;&#xFF0C;&#x8BE5;&#x53D8;&#x91CF;&#x90FD;&#x662F;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x3002;<br>&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x58F0;&#x660E;-&#x5728;&#x76F8;&#x540C;&#x4F5C;&#x7528;&#x57DF;&#x5185;&#xFF0C;&#x91CD;&#x590D;&#x58F0;&#x660E;&#x540C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x4F1A;&#x62A5;&#x9519;&#x3002;<br>const&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x53EA;&#x8BFB;&#x5E38;&#x91CF;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x58F0;&#x660E;&#x65F6;&#x8D4B;&#x503C;&#xFF0C;&#x8D4B;&#x503C;&#x540E;&#x8BE5;&#x5E38;&#x91CF;&#x4E0D;&#x53EF;&#x6539;&#x53D8;&#x3002;  </p>
+<h1 id="&#x53D8;&#x91CF;&#x7684;&#x89E3;&#x6784;&#x8D4B;&#x503C;">&#x53D8;&#x91CF;&#x7684;&#x89E3;&#x6784;&#x8D4B;&#x503C;</h1><ol>
+<li><p>&#x6570;&#x7EC4;&#x7684;&#x89E3;&#x6784;&#x8D4B;&#x503C;<br>&#x53EA;&#x8981;&#x7B49;&#x53F7;&#x4E24;&#x8FB9;&#x7684;&#x6A21;&#x5F0F;&#x76F8;&#x540C;&#xFF0C;&#x5DE6;&#x8FB9;&#x7684;&#x53D8;&#x91CF;&#x5C31;&#x4F1A;&#x88AB;&#x8D4B;&#x4E88;&#x5BF9;&#x5E94;&#x7684;&#x503C;:  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];	<span class="comment">//a = 1, b = 2, c = 3  </span></span><br><span class="line"><span class="keyword">var</span> [a, [[b], c]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];	<span class="comment">//a = 1, b = 2, c = 3  </span></span><br><span class="line"><span class="keyword">var</span> [a, ... b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];		<span class="comment">// a = 1, b = [2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x89E3;&#x6784;&#x4E0D;&#x6210;&#x529F;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x7B49;&#x4E8E;undefined:  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a] = [];</span><br><span class="line"><span class="keyword">var</span> [a] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> [a] = <span class="string">&apos;s&apos;</span>;</span><br><span class="line">...</span><br><span class="line"><span class="string">``</span><span class="string">`  </span><br><span class="line">&#x5BF9;undefined/null&#x89E3;&#x6784;&#x4F1A;&#x62A5;&#x9519;(&#x89E3;&#x6784;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6570;&#x7EC4;&#x6216;&#x5BF9;&#x8C61;):  </span><br><span class="line">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="keyword">var</span> [a] = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">var</span> [a] = <span class="literal">null</span>;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span><br><span class="line">&#x89E3;&#x6784;&#x8D4B;&#x503C;&#x5141;&#x8BB8;&#x6307;&#x5B9A;&#x9ED8;&#x8BA4;&#x503C;:</span></span><br></pre></td></tr></table></figure>
+<p>var [a = &#x2018;b&#x2019;] = [];    //a = &#x2018;b&#x2019;;<br>```<br>&#x9664;var&#x5916;&#xFF0C;&#x89E3;&#x6784;&#x8D4B;&#x503C;&#x4E5F;&#x9002;&#x7528;&#x4E8E;let/const&#x3002;  </p>
 </li>
-<li><p>&#x70B9;&#x51FB;&#x5C55;&#x5F00;/&#x5173;&#x95ED;&#x76EE;&#x5F55;&#x6811;<br> &#x901A;&#x8FC7;ng-show&#x5BF9;item.expand&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x70B9;&#x51FB;item&#x65F6;&#x5207;&#x6362;&#x5176;expand&#x53C2;&#x6570;&#xFF0C;&#x5B8C;&#x6210;&#x76EE;&#x5F55;&#x6811;&#x7684;&#x6253;&#x5F00;&#x4E0E;&#x5173;&#x95ED;</p>
+<li><p>&#x5BF9;&#x8C61;&#x7684;&#x8D4B;&#x503C;&#x89E3;&#x6784;<br>&#x5BF9;&#x8C61;&#x7684;&#x89E3;&#x6784;&#x4E0E;&#x6570;&#x7EC4;&#x6709;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x4E0D;&#x540C;-&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x6309;&#x6B21;&#x5E8F;&#x6392;&#x5217;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x53D6;&#x503C;&#x7531;&#x4ED6;&#x7684;&#x4F4D;&#x7F6E;&#x51B3;&#x5B9A;&#x3002;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x6CA1;&#x6709;&#x6B21;&#x5E8F;&#xFF0C;&#x53D8;&#x91CF;&#x5FC5;&#x987B;&#x4E0E;&#x5C5E;&#x6027;&#x540C;&#x540D;&#x624D;&#x80FD;&#x53D6;&#x5230;&#x6B63;&#x786E;&#x7684;&#x503C;&#x3002;</p>
+<pre><code class="javascript"><span class="keyword">var</span> {bar, foo} = {foo: <span class="string">&apos;aaa&apos;</span>, bar: <span class="string">&apos;bbb&apos;</span>};
+<span class="built_in">console</span>.log(bar); <span class="comment">//aaa</span>
+<span class="built_in">console</span>.log(foo); <span class="comment">//bbb</span>
+
+<span class="keyword">var</span> {baz} = {foo: <span class="string">&apos;aaa&apos;</span>};
+<span class="built_in">console</span>.log(baz); <span class="comment">//undefined</span>
+</code></pre>
 </li>
 </ol>
-<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;<br><a href="http://greengerong.com/blog/2015/09/02/angularshi-xian-di-gui-zhi-ling-tree-view/" target="_blank" rel="external">Angular&#x5B9E;&#x73B0;&#x9012;&#x5F52;&#x6307;&#x4EE4; - Tree View</a><br><a href="https://hairui219.gitbooks.io/learning_angular/content/zh/chapter04_10.html" target="_blank" rel="external">&#x5F15;&#x5165;ng-include&#x548C;&#x6A21;&#x677F;ng-template</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/11/angular-directive-recursion-tree/" data-id="cj1wry62n000r5kwatrzg49l7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/25/es6-study/" data-id="cj1wry627000j5kwax41rx6lh" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/">Angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frontend/">Frontend</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
 
     </footer>
   </div>
@@ -117,19 +141,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/15/react-markdown/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          React实现markdown编辑器
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/09/24/this-in-js/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/22/d3-study/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">this与JavaScrip中的四种调用模式</div>
+      <div class="article-nav-title">d3入门与实战</div>
     </a>
   
 </nav>
@@ -140,7 +155,7 @@
  
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-angular-directive-recursion-tree" data-title="Angular directive递归实现目录树结构" data-url="http://yoursite.com/2016/12/11/angular-directive-recursion-tree/"></div>
+    <div class="ds-thread" data-thread-key="post-es6-study" data-title="ES6重点小结" data-url="http://yoursite.com/2017/04/25/es6-study/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
