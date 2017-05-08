@@ -140,9 +140,10 @@
 <h2 id="9&#x67E5;&#x8BE2;&#x6240;&#x6709;&#x8BFE;&#x7A0B;&#x6210;&#x7EE9;&#x5C0F;&#x4E8E;60&#x5206;&#x7684;&#x540C;&#x5B66;&#x7684;&#x5B66;&#x53F7;&#x59D3;&#x540D;">9.&#x67E5;&#x8BE2;&#x6240;&#x6709;&#x8BFE;&#x7A0B;&#x6210;&#x7EE9;&#x5C0F;&#x4E8E;60&#x5206;&#x7684;&#x540C;&#x5B66;&#x7684;&#x5B66;&#x53F7;&#x3001;&#x59D3;&#x540D;;</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select S#,Sname from Student</span><br><span class="line">where S# not in (select Student.S# from Student,SC where Student.S#=SC.S# and score&gt;60)</span><br></pre></td></tr></table></figure>
 <h2 id="10&#x67E5;&#x8BE2;&#x6CA1;&#x6709;&#x5B66;&#x5168;&#x6240;&#x6709;&#x8BFE;&#x7684;&#x540C;&#x5B66;&#x7684;&#x5B66;&#x53F7;&#x59D3;&#x540D;">10.&#x67E5;&#x8BE2;&#x6CA1;&#x6709;&#x5B66;&#x5168;&#x6240;&#x6709;&#x8BFE;&#x7684;&#x540C;&#x5B66;&#x7684;&#x5B66;&#x53F7;&#x3001;&#x59D3;&#x540D;&#xFF1B;</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select S#,Sname from Student,SC</span><br><span class="line">where Student.S#=SC.S# </span><br><span class="line">group by Student.S#,Student.Sname </span><br><span class="line">having count(C#) &lt;(select count(C#) from Course);</span><br></pre></td></tr></table></figure>
       
+      <p><strong>本文首发于<a href="http://www.miaoyunze.com/">http://www.miaoyunze.com/</a>，转载请注明出处</p></strong>
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/04/Common-SQL-statements/" data-id="cj2euxony001c64wajs33btu4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/04/Common-SQL-statements/" data-id="cj2g3r8yu001ct8wa2tq6bumx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
