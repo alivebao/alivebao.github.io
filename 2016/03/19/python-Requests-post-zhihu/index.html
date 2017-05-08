@@ -131,7 +131,7 @@
                
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/19/python-Requests-post-zhihu/" data-id="cj2g7zzpu000co4wabmn8hfga" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/19/python-Requests-post-zhihu/" data-id="cj2g9rug2000c1kwaq6wr9t4i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +241,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">浏览数目</h3>
+    <h3 class="widget-title">浏览次数</h3>
     <div class="widget">
       <ul class="popularlist">
       </ul>
@@ -293,16 +293,26 @@ function addCount (Counter) {
       console.log("get data error")
     }
     else if(results.length > 0){
-      var counter = results[0];
+      var counter = results[0]
+      $('.article-header').append('<div class="margin-top-20">阅读次数：'+ counter.attributes.time + '</div>')
       counter.fetchWhenSave(true);
       counter.increment("time");
       counter.save();
     }
     else{
+      url = $('.article-date').attr('href').trim();
+      title = $('.article-title').text().trim();
+      $('.article-header').append('<div class="margin-top-20">阅读次数：0</div>')
       var newcounter = new Counter();
-      newcounter.set("title",title);
-      newcounter.set("url",url);
-      newcounter.set("time",1);
+      newcounter.set("title", title);
+      newcounter.set("url", url);
+      newcounter.set("time", 1);
+
+      var acl = new AV.ACL();
+      acl.setPublicReadAccess(true);
+      acl.setPublicWriteAccess(true);
+      newcounter.setACL(acl);
+
       newcounter.save(null,{
         success: function(newcounter){
           //alert('New object created');

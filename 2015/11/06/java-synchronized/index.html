@@ -148,7 +148,7 @@ synchronized代码块
                
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/java-synchronized/" data-id="cj2g7zzqa000fo4wa5rpba7a9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/java-synchronized/" data-id="cj2g9rug3000f1kwakozdvtl3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA多线程/">JAVA多线程</a></li></ul>
@@ -260,7 +260,7 @@ synchronized代码块
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">浏览数目</h3>
+    <h3 class="widget-title">浏览次数</h3>
     <div class="widget">
       <ul class="popularlist">
       </ul>
@@ -312,16 +312,26 @@ function addCount (Counter) {
       console.log("get data error")
     }
     else if(results.length > 0){
-      var counter = results[0];
+      var counter = results[0]
+      $('.article-header').append('<div class="margin-top-20">阅读次数：'+ counter.attributes.time + '</div>')
       counter.fetchWhenSave(true);
       counter.increment("time");
       counter.save();
     }
     else{
+      url = $('.article-date').attr('href').trim();
+      title = $('.article-title').text().trim();
+      $('.article-header').append('<div class="margin-top-20">阅读次数：0</div>')
       var newcounter = new Counter();
-      newcounter.set("title",title);
-      newcounter.set("url",url);
-      newcounter.set("time",1);
+      newcounter.set("title", title);
+      newcounter.set("url", url);
+      newcounter.set("time", 1);
+
+      var acl = new AV.ACL();
+      acl.setPublicReadAccess(true);
+      acl.setPublicWriteAccess(true);
+      newcounter.setACL(acl);
+
       newcounter.save(null,{
         success: function(newcounter){
           //alert('New object created');
