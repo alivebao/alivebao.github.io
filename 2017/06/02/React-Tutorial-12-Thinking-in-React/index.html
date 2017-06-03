@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React教程 - 12. React的编程思想 | 缪运泽</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;lt;!-- toc --&amp;gt;
+
+从视觉稿(Mock)开始
+第一步-将UI分解至组件的层次结构中
+第二步-在React中构建一个静态版本
+第三步-确定UI状态(state)的最小(但完整的)表示
+第四步-确定state的位置
+第五步-添加反向数据流
+写在最后
+
+&amp;lt;!-- tocstop --&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React教程 - 12. React的编程思想">
+<meta property="og:url" content="http://yoursite.com/2017/06/02/React-Tutorial-12-Thinking-in-React/index.html">
+<meta property="og:site_name" content="缪运泽">
+<meta property="og:description" content="&amp;lt;!-- toc --&amp;gt;
+
+从视觉稿(Mock)开始
+第一步-将UI分解至组件的层次结构中
+第二步-在React中构建一个静态版本
+第三步-确定UI状态(state)的最小(但完整的)表示
+第四步-确定state的位置
+第五步-添加反向数据流
+写在最后
+
+&amp;lt;!-- tocstop --&amp;gt;">
+<meta property="og:image" content="http://7xv88e.com1.z0.glb.clouddn.com/thinking-in-react-mock.png">
+<meta property="og:image" content="http://7xv88e.com1.z0.glb.clouddn.com/thinking-in-react-components.png">
+<meta property="og:updated_time" content="2017-06-03T07:49:34.107Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React教程 - 12. React的编程思想">
+<meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;
+
+从视觉稿(Mock)开始
+第一步-将UI分解至组件的层次结构中
+第二步-在React中构建一个静态版本
+第三步-确定UI状态(state)的最小(但完整的)表示
+第四步-确定state的位置
+第五步-添加反向数据流
+写在最后
+
+&amp;lt;!-- tocstop --&amp;gt;">
+  
+    <link rel="alternative" href="/atom.xml" title="缪运泽" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+  <script src="https://cdn1.lncld.net/static/js/2.2.1/av-min.js"></script>
+  <script>AV.init({ appId: 'bDTuwcyj9mnPAsraghABFbLh-gzGzoHsz', appKey: 'kLySVU8RHyPcNAcrTHNiJMMd' });</script>
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">缪运泽</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">miaoyunze@foxmail.com</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-React-Tutorial-12-Thinking-in-React" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/02/React-Tutorial-12-Thinking-in-React/" class="article-date">
+  <time datetime="2017-06-02T14:35:09.000Z" itemprop="datePublished">2017-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React教程 - 12. React的编程思想
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+<ul>
+<li><a href="#&#x4ECE;&#x89C6;&#x89C9;&#x7A3F;mock&#x5F00;&#x59CB;">&#x4ECE;&#x89C6;&#x89C9;&#x7A3F;(Mock)&#x5F00;&#x59CB;</a></li>
+<li><a href="#&#x7B2C;&#x4E00;&#x6B65;-&#x5C06;ui&#x5206;&#x89E3;&#x81F3;&#x7EC4;&#x4EF6;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;">&#x7B2C;&#x4E00;&#x6B65;-&#x5C06;UI&#x5206;&#x89E3;&#x81F3;&#x7EC4;&#x4EF6;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;</a></li>
+<li><a href="#&#x7B2C;&#x4E8C;&#x6B65;-&#x5728;react&#x4E2D;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7248;&#x672C;">&#x7B2C;&#x4E8C;&#x6B65;-&#x5728;React&#x4E2D;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7248;&#x672C;</a></li>
+<li><a href="#&#x7B2C;&#x4E09;&#x6B65;-&#x786E;&#x5B9A;ui&#x72B6;&#x6001;state&#x7684;&#x6700;&#x5C0F;&#x4F46;&#x5B8C;&#x6574;&#x7684;&#x8868;&#x793A;">&#x7B2C;&#x4E09;&#x6B65;-&#x786E;&#x5B9A;UI&#x72B6;&#x6001;(state)&#x7684;&#x6700;&#x5C0F;(&#x4F46;&#x5B8C;&#x6574;&#x7684;)&#x8868;&#x793A;</a></li>
+<li><a href="#&#x7B2C;&#x56DB;&#x6B65;-&#x786E;&#x5B9A;state&#x7684;&#x4F4D;&#x7F6E;">&#x7B2C;&#x56DB;&#x6B65;-&#x786E;&#x5B9A;state&#x7684;&#x4F4D;&#x7F6E;</a></li>
+<li><a href="#&#x7B2C;&#x4E94;&#x6B65;-&#x6DFB;&#x52A0;&#x53CD;&#x5411;&#x6570;&#x636E;&#x6D41;">&#x7B2C;&#x4E94;&#x6B65;-&#x6DFB;&#x52A0;&#x53CD;&#x5411;&#x6570;&#x636E;&#x6D41;</a></li>
+<li><a href="#&#x5199;&#x5728;&#x6700;&#x540E;">&#x5199;&#x5728;&#x6700;&#x540E;</a></li>
+</ul>
+<!-- tocstop -->
+<a id="more"></a>
+<p>&#x672C;&#x6587;&#x8BD1;&#x81EA;<a href="https://facebook.github.io/react/docs/thinking-in-react.html" target="_blank" rel="external">React&#x5B98;&#x65B9;&#x6587;&#x6863;</a><br>&#x5168;&#x6587;&#x7FFB;&#x8BD1;&#x53CA;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#xFF0C;&#x8BF7;&#x53C2;&#x770B;<a href="https://github.com/alivebao/React-Tutorial" target="_blank" rel="external">&#x6211;&#x7684;Github</a></p>
+<p>&#x4ECE;&#x6211;&#x4EEC;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#xFF0C;React&#x662F;&#x4F7F;&#x7528;JavaScript&#x6784;&#x5EFA;&#x5927;&#x578B;&#x3001;&#x9AD8;&#x6548;Web&#x5E94;&#x7528;&#x7684;&#x9996;&#x9009;&#xFF0C;&#x8FD9;&#x5728;Facebook&#x548C;Instagram&#x4E2D;&#x5DF2;&#x7ECF;&#x5F88;&#x597D;&#x7684;&#x8BC1;&#x660E;&#x4E86;&#x3002;<br>React&#x6700;&#x68D2;&#x7684;&#x90E8;&#x5206;&#x4E4B;&#x4E00;&#x5728;&#x4E8E;-&#x5F53;&#x6211;&#x4EEC;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x4EA7;&#x54C1;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x5F71;&#x54CD;&#x6211;&#x4EEC;&#x5BF9;&#x4EA7;&#x54C1;&#x7684;&#x601D;&#x8003;&#x3002;&#x5728;&#x672C;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5F15;&#x5BFC;&#x60A8;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;React&#x6784;&#x5EFA;&#x67D0;&#x5E94;&#x7528;(&#x4E00;&#x4E2A;&#x53EF;&#x641C;&#x7D22;&#x7684;&#x4EA7;&#x54C1;&#x5217;&#x8868;)&#x7684;&#x601D;&#x8003;&#x8FC7;&#x7A0B;&#x3002;  </p>
+<h1 id="&#x4ECE;&#x89C6;&#x89C9;&#x7A3F;mock&#x5F00;&#x59CB;">&#x4ECE;&#x89C6;&#x89C9;&#x7A3F;(Mock)&#x5F00;&#x59CB;</h1><p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6709;&#x4E00;&#x4E2A;JSON API&#x548C;&#x4E00;&#x4E2A;&#x8BBE;&#x8BA1;&#x5E08;&#x7684;&#x521D;&#x7A3F;&#xFF0C;&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="http://7xv88e.com1.z0.glb.clouddn.com/thinking-in-react-mock.png" alt=""><br>JSON API&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x4E3A;&#xFF1A;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  {category: <span class="string">&quot;Sporting Goods&quot;</span>, price: <span class="string">&quot;$49.99&quot;</span>, stocked: <span class="literal">true</span>, name: <span class="string">&quot;Football&quot;</span>},</span><br><span class="line">  {category: <span class="string">&quot;Sporting Goods&quot;</span>, price: <span class="string">&quot;$9.99&quot;</span>, stocked: <span class="literal">true</span>, name: <span class="string">&quot;Baseball&quot;</span>},</span><br><span class="line">  {category: <span class="string">&quot;Sporting Goods&quot;</span>, price: <span class="string">&quot;$29.99&quot;</span>, stocked: <span class="literal">false</span>, name: <span class="string">&quot;Basketball&quot;</span>},</span><br><span class="line">  {category: <span class="string">&quot;Electronics&quot;</span>, price: <span class="string">&quot;$99.99&quot;</span>, stocked: <span class="literal">true</span>, name: <span class="string">&quot;iPod Touch&quot;</span>},</span><br><span class="line">  {category: <span class="string">&quot;Electronics&quot;</span>, price: <span class="string">&quot;$399.99&quot;</span>, stocked: <span class="literal">false</span>, name: <span class="string">&quot;iPhone 5&quot;</span>},</span><br><span class="line">  {category: <span class="string">&quot;Electronics&quot;</span>, price: <span class="string">&quot;$199.99&quot;</span>, stocked: <span class="literal">true</span>, name: <span class="string">&quot;Nexus 7&quot;</span>}</span><br><span class="line">];</span><br></pre></td></tr></table></figure></p>
+<h1 id="&#x7B2C;&#x4E00;&#x6B65;-&#x5C06;ui&#x5206;&#x89E3;&#x81F3;&#x7EC4;&#x4EF6;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;">&#x7B2C;&#x4E00;&#x6B65;-&#x5C06;UI&#x5206;&#x89E3;&#x81F3;&#x7EC4;&#x4EF6;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;</h1><p>&#x6211;&#x4EEC;&#x9996;&#x5148;&#x4F1A;&#x505A;&#x7684;&#x4E8B;&#x662F;&#x4E3A;&#x89C6;&#x89C9;&#x7A3F;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x3001;&#x5B50;&#x7EC4;&#x4EF6;&#x753B;&#x6846;&#xFF0C;&#x5E76;&#x7ED9;&#x4ED6;&#x4EEC;&#x547D;&#x540D;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x662F;&#x548C;&#x8BBE;&#x8BA1;&#x5E08;&#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x4ED6;&#x4EEC;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x3002;&#x548C;&#x4ED6;&#x4EEC;&#x4EA4;&#x6D41;&#x4E00;&#x4E0B;&#xFF0C;&#x7EA6;&#x5B9A;&#x4E00;&#x4E0B;&#x547D;&#x540D;&#x89C4;&#x8303;&#x3002;&#x4ED6;&#x4EEC;&#x5728;PS&#x4E0A;&#x7ED9;&#x56FE;&#x5C42;&#x7684;&#x547D;&#x540D;&#x53EF;&#x80FD;&#x6700;&#x7EC8;&#x6210;&#x4E3A;&#x6211;&#x4EEC;React&#x7EC4;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#x3002;<br>&#x4F46;&#x6211;&#x4EEC;&#x5E94;&#x5982;&#x4F55;&#x62C6;&#x5206;&#x7EC4;&#x4EF6;&#xFF1F;&#x628A;&#x8FD9;&#x5F53;&#x505A;&#x62C6;&#x5206;&#x4E00;&#x4E2A;&#x65B0;&#x65B9;&#x6CD5;&#x6216;&#x65B0;&#x5BF9;&#x8C61;&#x5427;&#x3002;&#x4E00;&#x4E2A;&#x6280;&#x5DE7;&#x662F; <strong>&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;</strong> &#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x53EA;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#x3002;&#x82E5;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#x6B63;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x590D;&#x6742;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x5FC5;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x62C6;&#x5206;&#x3002;<br>&#x7531;&#x4E8E;&#x5E38;&#x5E38;&#x9700;&#x8981;&#x5411;&#x7528;&#x6237;&#x5C55;&#x793A;JSON&#x6570;&#x636E;&#x6A21;&#x578B;&#xFF0C;&#x82E5;&#x6A21;&#x578B;&#x5EFA;&#x7ACB;&#x7684;&#x6B63;&#x786E;&#xFF0C;UI(&#x4EE5;&#x53CA;&#x7EC4;&#x4EF6;&#x7ED3;&#x6784;)&#x80FD;&#x591F;&#x5F97;&#x5230;&#x5F88;&#x597D;&#x7684;&#x6620;&#x5C04;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;UI&#x548C;&#x6570;&#x636E;&#x6A21;&#x578B;&#x5F80;&#x5F80;&#x62E5;&#x6709;&#x76F8;&#x540C;&#x7684;&#x4FE1;&#x606F;&#x7ED3;&#x6784;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5C06;UI&#x62C6;&#x5206;&#x6210;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x901A;&#x5E38;&#x6BD4;&#x8F83;&#x7410;&#x788E;&#x3002;&#x53EA;&#x9700;&#x5C06;&#x5176;&#x62C6;&#x5206;&#x6210;&#x5BF9;&#x5E94;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x7247;&#x6BB5;&#x5373;&#x53EF;&#x3002;<br><img src="http://7xv88e.com1.z0.glb.clouddn.com/thinking-in-react-components.png" alt=""><br>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x6709;5&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5BF9;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x4EE3;&#x7801;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4E86;&#x6807;&#x6CE8;&#x3002;  </p>
+<ol>
+<li><code>FilterableProducTable</code>(&#x6A58;&#x8272;)&#xFF1A;&#x5305;&#x542B;&#x6574;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;  </li>
+<li><code>SearchBar</code>(&#x84DD;&#x8272;)&#xFF1A;&#x63A5;&#x6536;&#x6240;&#x6709;&#x7684;&#x7528;&#x6237;&#x8F93;&#x5165;&#x3002;  </li>
+<li><code>ProductTable</code>(&#x7EFF;&#x8272;)&#xFF1A;&#x57FA;&#x4E8E;&#x7528;&#x6237;&#x7684;&#x8F93;&#x5165;&#x663E;&#x793A;&#x5E76;&#x8FC7;&#x6EE4;&#x6570;&#x636E;&#x96C6;&#x5408;&#x3002;  </li>
+<li><code>ProductCategoryRow</code>(&#x5B9D;&#x77F3;&#x7EFF;)&#xFF1A;&#x663E;&#x793A;&#x6BCF;&#x4E2A;&#x7C7B;&#x522B;&#x7684;&#x7684;&#x6807;&#x9898;&#x3002;  </li>
+<li><code>ProductRow</code>(&#x7EA2;&#x8272;)&#xFF1A;&#x6309;&#x884C;&#x663E;&#x793A;&#x6BCF;&#x4E2A;&#x4EA7;&#x54C1;&#x7684;&#x6570;&#x636E;&#x3002;<br>&#x4EE5;<code>ProductCategoryRow</code>&#x4E3A;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5305;&#x542B;&#x201D;&#x59D3;&#x540D;&#x201D;&#x548C;&#x201D;&#x4EF7;&#x683C;&#x201D;&#x7684;&#x8868;&#x5934;&#x5E76;&#x4E0D;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x7EC4;&#x4EF6;&#x3002;&#x8FD9;&#x5C5E;&#x4E8E;&#x4E2A;&#x4EBA;&#x9009;&#x62E9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x522B;&#x7684;&#x65B9;&#x6848;&#x3002;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;<code>ProductTable</code>&#x7684;&#x4E00;&#x90E8;&#x5206;&#x6765;&#x5904;&#x7406;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5176;&#x662F;&#x6570;&#x636E;&#x96C6;&#x5408;&#x6E32;&#x67D3;&#x7684;&#x4E00;&#x90E8;&#x5206;(&#x8FD9;&#x90E8;&#x5206;&#x5C5E;&#x4E8E;<code>ProductTable</code>&#x7684;&#x804C;&#x8D23;)&#x3002;&#x7136;&#x800C;&#xFF0C;&#x82E5;&#x8868;&#x5934;&#x5F88;&#x590D;&#x6742;(&#x5982;&#x9700;&#x8981;&#x4E3A;&#x5176;&#x6DFB;&#x52A0;&#x6392;&#x5E8F;&#x529F;&#x80FD;&#x7B49;)&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x62C6;&#x5206;&#x6210;&#x4E00;&#x4E2A;<code>ProductTableHeader</code>&#x7EC4;&#x4EF6;&#x662F;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x3002;<br>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5728;&#x89C6;&#x89C9;&#x7A3F;&#x4E2D;&#x6807;&#x8BC6;&#x51FA;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x5BF9;&#x4ED6;&#x4EEC;&#x8FDB;&#x884C;&#x5C42;&#x7EA7;&#x6392;&#x5217;&#x3002;&#x51FA;&#x73B0;&#x5728;A&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x7684;&#x7EC4;&#x4EF6;B&#xFF0C;&#x5C31;&#x662F;A&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#xFF1A;</li>
+</ol>
+<ul>
+<li><code>FilterableProducTable</code><ul>
+<li><code>SearchBar</code></li>
+<li><code>ProductTable</code><ul>
+<li><code>ProductCategoryRow</code></li>
+<li><code>ProductRow</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="&#x7B2C;&#x4E8C;&#x6B65;-&#x5728;react&#x4E2D;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7248;&#x672C;">&#x7B2C;&#x4E8C;&#x6B65;-&#x5728;React&#x4E2D;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7248;&#x672C;</h1><iframe id="cp_embed_vXpAgj" src="//codepen.io/lacker/embed/vXpAgj?height=600&amp;theme-id=0&amp;slug-hash=vXpAgj&amp;default-tab=js&amp;user=lacker&amp;embed-version=2" scrolling="no" frameborder="0" height="600" allowtransparency="true" allowfullscreen="true" name="CodePen Embed" title="CodePen Embed 2" class="cp_embed_iframe " style="width: 100%; overflow: hidden;"> </iframe>
+
+<p>&#x6709;&#x4E86;&#x7EC4;&#x4EF6;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x65F6;&#x5019;&#x5B9E;&#x73B0;&#x6211;&#x4EEC;&#x7684;APP&#x4E86;&#x3002;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x5148;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x201C;&#x63A5;&#x53D7;&#x6570;&#x636E;&#x6A21;&#x578B;&#x5E76;&#x6E32;&#x67D3;UI&#xFF0C;&#x4F46;&#x4E0D;&#x5B58;&#x5728;&#x4EA4;&#x4E92;&#x201D;&#x7684;&#x7248;&#x672C;&#x3002;&#x6700;&#x597D;&#x89E3;&#x8026;&#x8FD9;&#x4E9B;&#x5904;&#x7406;-&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7248;&#x672C;&#x4E0D;&#x9700;&#x8981;&#x601D;&#x8003;&#x592A;&#x591A;&#xFF0C;&#x4F46;&#x6DFB;&#x52A0;&#x4EA4;&#x4E92;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x8003;&#x8651;&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x3002;<br>&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x6E32;&#x67D3;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x9759;&#x6001;APP&#xFF0C;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x590D;&#x7528;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x5E76;&#x901A;&#x8FC7;&#x5C5E;&#x6027;&#x4F20;&#x9012;&#x6570;&#x636E;&#x7684;&#x7EC4;&#x4EF6;&#x3002;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x4ECE;&#x7236;&#x7EC4;&#x4EF6;&#x5411;&#x5B50;&#x7EC4;&#x4EF6;&#x4F20;&#x9012;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x60A8;&#x719F;&#x6089;&#x72B6;&#x6001;(state)&#x7684;&#x6982;&#x5FF5;&#xFF0C; <strong>&#x4E0D;&#x8981;&#x5728;&#x8FD9;&#x4E2A;&#x9759;&#x6001;&#x7248;&#x672C;&#x7684;APP&#x4E2D;&#x4F7F;&#x7528;state&#x3002;</strong> state&#x53EA;&#x7528;&#x4E8E;&#x4EA4;&#x4E92;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x90A3;&#x4E9B;&#x4F1A;&#x968F;&#x65F6;&#x53D8;&#x52A8;&#x7684;&#x6570;&#x636E;&#x3002;&#x7531;&#x4E8E;&#x8FD9;&#x662F;&#x4E2A;&#x9759;&#x6001;APP&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x4F7F;&#x7528;state&#x3002;<br>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x6216;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x6784;&#x5EFA;&#x5E94;&#x7528;&#x3002;&#x5728;&#x6784;&#x5EFA;&#x7B80;&#x5355;&#x7684;&#x5E94;&#x7528;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x66F4;&#x5BB9;&#x6613;&#x3002;&#x5728;&#x6784;&#x5EFA;&#x5927;&#x578B;&#x5E94;&#x7528;&#x65F6;&#xFF0C;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x80FD;&#x591F;&#x66F4;&#x65B9;&#x4FBF;&#x4E0E;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x3002;<br>&#x5728;&#x8FD9;&#x6B65;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x91CD;&#x7528;&#x7684;&#xFF0C;&#x6E32;&#x67D3;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x7EC4;&#x4EF6;&#x5E93;&#x3002;&#x7531;&#x4E8E;&#x662F;&#x4E2A;&#x9759;&#x6001;&#x5E94;&#x7528;&#xFF0C;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x53EA;&#x7528;<code>render()</code>&#x65B9;&#x6CD5;&#x3002;&#x5C42;&#x7EA7;&#x7ED3;&#x6784;&#x9876;&#x5C42;&#x7684;&#x7EC4;&#x4EF6;(<code>FilterableProducTable</code>)&#x5C06;&#x63A5;&#x6536;&#x6570;&#x636E;&#x6A21;&#x578B;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;(props)&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x6A21;&#x578B;&#x5E76;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>ReactDOM.render()</code>&#x65F6;&#xFF0C;UI&#x5C06;&#x540C;&#x6B65;&#x66F4;&#x65B0;&#x3002;&#x7531;&#x4E8E;&#x8FC7;&#x7A0B;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x89C2;&#x6D4B;UI&#x7684;&#x66F4;&#x65B0;&#x53CA;&#x76F8;&#x5173;&#x6570;&#x636E;&#x7684;&#x53D8;&#x5316;&#x662F;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x7684;&#x3002;React&#x7684; <strong>&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;</strong> (&#x4E5F;&#x79F0;&#x4E3A;&#x5355;&#x5411;&#x7ED1;&#x5B9A;)&#x80FD;&#x591F;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4FDD;&#x8BC1;&#x6A21;&#x5757;&#x5316;&#x548C;&#x9AD8;&#x6027;&#x80FD;&#x3002;  </p>
+<h1 id="&#x7B2C;&#x4E09;&#x6B65;-&#x786E;&#x5B9A;ui&#x72B6;&#x6001;state&#x7684;&#x6700;&#x5C0F;&#x4F46;&#x5B8C;&#x6574;&#x7684;&#x8868;&#x793A;">&#x7B2C;&#x4E09;&#x6B65;-&#x786E;&#x5B9A;UI&#x72B6;&#x6001;(state)&#x7684;&#x6700;&#x5C0F;(&#x4F46;&#x5B8C;&#x6574;&#x7684;)&#x8868;&#x793A;</h1><p>&#x4E3A;&#x4E86;&#x8BA9;UI&#x53D8;&#x5F97;&#x53EF;&#x4EA4;&#x4E92;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x80FD;&#x66F4;&#x6539;&#x5E95;&#x5C42;&#x7684;&#x6570;&#x636E;&#x6A21;&#x578B;&#x3002;React&#x901A;&#x8FC7;state&#x4F7F;&#x8FD9;&#x4E00;&#x8FC7;&#x7A0B;&#x53D8;&#x5F97;&#x5BB9;&#x6613;&#x3002;<br>&#x4E3A;&#x4E86;&#x6B63;&#x786E;&#x7684;&#x6784;&#x67B6;&#x5E94;&#x7528;&#xFF0C;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x8981;&#x8003;&#x8651;&#x7684;&#x662F;&#x5E94;&#x7528;&#x9700;&#x8981;&#x7684;&#x53EF;&#x53D8;&#x72B6;&#x6001;&#x7684;&#x6700;&#x5C0F;&#x96C6;&#x5408;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x5173;&#x952E;&#x662F;DRY(Don&#x2019;t Repeat Yourself)&#x539F;&#x5219;&#x3002;&#x627E;&#x51FA;&#x5E94;&#x7528;&#x6240;&#x9700;&#x7684;&#x6700;&#x5C0F;&#x7684;&#x72B6;&#x6001;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x786E;&#x4FDD;&#x8BE5;&#x72B6;&#x6001;&#x96C6;&#x5408;&#x53EF;&#x6309;&#x9700;&#x8BA1;&#x7B97;&#x51FA;&#x5E94;&#x7528;&#x7684;&#x5404;&#x72B6;&#x6001;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x82E5;&#x6211;&#x4EEC;&#x6B63;&#x5728;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;TODO&#x5217;&#x8868;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EA;&#x8981;&#x4FDD;&#x7559;TODO&#x5143;&#x7D20;&#x6570;&#x7EC4;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x7528;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;state&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;(&#x8BE5;&#x6570;&#x5B57;&#x53EF;&#x7531;&#x6570;&#x7EC4;&#x5F97;&#x51FA;)&#x3002;<br>&#x60F3;&#x60F3;&#x6211;&#x4EEC;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#xFF1A;</p>
+<ul>
+<li>&#x4EA7;&#x54C1;&#x7684;&#x539F;&#x59CB;&#x5217;&#x8868;</li>
+<li>&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x641C;&#x7D22;&#x6587;&#x672C;</li>
+<li>&#x590D;&#x9009;&#x6846;&#x7684;&#x503C;</li>
+<li>&#x8FC7;&#x6EE4;&#x540E;&#x7684;&#x4EA7;&#x54C1;&#x5217;&#x8868;  </li>
+</ul>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x8FC7;&#x4E00;&#x904D;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x786E;&#x8BA4;&#x90A3;&#x4E9B;&#x5C5E;&#x4E8E;state&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E09;&#x4E2A;&#x95EE;&#x9898;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF1A;</p>
+<ol>
+<li>&#x5176;&#x662F;&#x5426;&#x7531;&#x7236;&#x7EC4;&#x4EF6;&#x901A;&#x8FC7;props&#x4F20;&#x9012;-&#x82E5;&#x662F;&#xFF0C;&#x5176;&#x53EF;&#x80FD;&#x4E0D;&#x662F;state</li>
+<li>&#x5176;&#x662F;&#x5426;&#x662F;&#x56FA;&#x5B9A;&#x4E0D;&#x53D8;&#x7684;-&#x82E5;&#x662F;&#xFF0C;&#x5176;&#x53EF;&#x80FD;&#x4E0D;&#x662F;state</li>
+<li>&#x8BE5;&#x503C;&#x53EF;&#x901A;&#x8FC7;&#x5176;&#x4ED6;state&#x6216;props&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x5417;-&#x82E5;&#x662F;&#xFF0C;&#x5176;&#x53EF;&#x80FD;&#x4E0D;&#x662F;state  </li>
+</ol>
+<p>&#x4EA7;&#x54C1;&#x7684;&#x539F;&#x59CB;&#x5217;&#x8868;&#x4F5C;&#x4E3A;props&#x4F20;&#x9012;&#xFF0C;&#x56E0;&#x6B64;&#x5176;&#x4E0D;&#x662F;state&#x3002;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x641C;&#x7D22;&#x6587;&#x672C;&#x548C;&#x590D;&#x9009;&#x6846;&#x7684;&#x503C;&#x770B;&#x8D77;&#x6765;&#x662F;state(&#x4ED6;&#x4EEC;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4E14;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x5176;&#x4ED6;props/state&#x8BA1;&#x7B97;&#x5F97;&#x51FA;)&#x3002;&#x6700;&#x540E;&#xFF0C;&#x8FC7;&#x6EE4;&#x540E;&#x7684;&#x4EA7;&#x54C1;&#x5217;&#x8868;&#x4E0D;&#x5C5E;&#x4E8E;state-&#x5176;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EA7;&#x54C1;&#x7684;&#x539F;&#x59CB;&#x5217;&#x8868;+&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x641C;&#x7D22;&#x6587;&#x672C;+&#x590D;&#x9009;&#x6846;&#x7684;&#x503C;&#x8BA1;&#x7B97;&#x5F97;&#x51FA;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;&#x6839;&#x636E;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x6700;&#x7EC8;&#x7684;state&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x641C;&#x7D22;&#x6587;&#x672C;</li>
+<li>&#x590D;&#x9009;&#x6846;&#x7684;&#x503C;</li>
+</ul>
+<h1 id="&#x7B2C;&#x56DB;&#x6B65;-&#x786E;&#x5B9A;state&#x7684;&#x4F4D;&#x7F6E;">&#x7B2C;&#x56DB;&#x6B65;-&#x786E;&#x5B9A;state&#x7684;&#x4F4D;&#x7F6E;</h1><p><iframe id="cp_embed_ORzEkG" src="//codepen.io/lacker/embed/ORzEkG?height=600&amp;theme-id=0&amp;slug-hash=ORzEkG&amp;default-tab=js&amp;user=lacker&amp;embed-version=2" scrolling="no" frameborder="0" height="600" allowtransparency="true" allowfullscreen="true" name="CodePen Embed" title="CodePen Embed 1" class="cp_embed_iframe " style="width: 100%; overflow: hidden;"> </iframe><br>&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x4E00;&#x6B65;&#x786E;&#x8BA4;&#x4E86;&#x5E94;&#x7528;&#x7684;&#x6700;&#x5C0F;state&#x96C6;&#x5408;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x8981;&#x786E;&#x5B9A;&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x662F;&#x53EF;&#x53D8;&#x7684;&#x3002;&#x6216;&#x8005;&#x8BF4;&#xFF0C;&#x786E;&#x5B9A;&#x8FD9;&#x4E9B;state&#x7684;owner&#x3002;<br>&#x8BB0;&#x4F4F;&#xFF1A;React&#x662F;&#x81EA;&#x4E0A;&#x800C;&#x4E0B;&#x7684;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#x5C42;&#x7EA7;&#x3002;&#x8FD9;&#x4E5F;&#x8BB8;&#x4F1A;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x7ACB;&#x5373;&#x786E;&#x5B9A;state&#x5E94;&#x653E;&#x5728;&#x54EA;&#x4E2A;&#x7EC4;&#x4EF6;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#x8FDB;&#x884C;&#x786E;&#x5B9A;&#xFF1A;<br>&#x5BF9;&#x4E8E;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;state&#xFF1A;  </p>
+<ul>
+<li>&#x786E;&#x5B9A;&#x6BCF;&#x4E2A;&#x57FA;&#x4E8E;&#x8BE5;state&#x6E32;&#x67D3;&#x7684;&#x7EC4;&#x4EF6;  </li>
+<li>&#x627E;&#x5230;&#x516C;&#x5171;&#x7684;&#x7236;&#x7EC4;&#x4EF6;(&#x53CA;&#x6240;&#x6709;&#x9700;&#x8981;&#x8BE5;state&#x7EC4;&#x4EF6;&#x7684;&#x516C;&#x5171;&#x7956;&#x5148;&#x7EC4;&#x4EF6;)  </li>
+<li>&#x8BE5;state&#x5E94;&#x7F6E;&#x4E8E;&#x516C;&#x5171;&#x7236;&#x7EC4;&#x4EF6;&#x6216;&#x66F4;&#x9AD8;&#x5C42;&#x7EA7;&#x7684;&#x7EC4;&#x4EF6;&#x4E2D;  </li>
+<li>&#x82E5;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x5408;&#x9002;&#x7684;&#x653E;&#x7F6E;state&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x53EF;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7EC4;&#x4EF6;&#x5B58;&#x50A8;&#x8BE5;state&#xFF0C;&#x5E76;&#x5C06;&#x8FD9;&#x4E2A;&#x65B0;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x81F3;&#x516C;&#x5171;&#x7236;&#x7EC4;&#x4EF6;&#x7684;&#x4E0A;&#x5C42;<br>&#x5C06;&#x8FD9;&#x4E2A;&#x7B56;&#x7565;&#x5E94;&#x7528;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF1A;  </li>
+<li><code>ProductTable</code>&#x9700;&#x8981;&#x673A;&#x9047;state&#x8FC7;&#x6EE4;&#x4EA7;&#x54C1;&#x5217;&#x8868;&#x3002;<code>SearchBar</code>&#x9700;&#x8981;&#x5C55;&#x793A;&#x641C;&#x7D22;&#x6587;&#x672C;&#x548C;&#x9009;&#x4E2D;&#x72B6;&#x6001;  </li>
+<li>&#x516C;&#x5171;&#x7236;&#x7EC4;&#x4EF6;&#x4E3A;<code>FilterableProducTable</code>  </li>
+<li>&#x4ECE;&#x6982;&#x5FF5;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x5C06;&#x8FC7;&#x6EE4;&#x6587;&#x672C;&#x548C;&#x9009;&#x4E2D;&#x7684;&#x503C;&#x7F6E;&#x4E8E;<code>FilterableProducTable</code>&#x662F;&#x5408;&#x9002;&#x7684;<br>&#x7EFC;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;state&#x7F6E;&#x4E8E;<code>FilterableProducTable</code>&#x4E2D;&#x3002;<br>&#x9996;&#x5148;&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;<code>this.state = {filterText: &apos;&apos;, inStockOnly: false}</code>&#x5230;<code>FilterableProducTable</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x7528;&#x4E8E;&#x521D;&#x59CB;&#x5316;&#x7A0B;&#x5E8F;&#x7684;&#x72B6;&#x6001;&#x3002;<br>&#x7136;&#x540E;&#xFF0C;&#x5C06;<code>filterText</code>&#x548C;<code>isStockOnly</code>&#x4F5C;&#x4E3A;props&#x4F20;&#x9012;&#x7ED9;<code>ProductTable</code>&#x548C;<code>SearchBar</code>&#x3002;<br>&#x6700;&#x540E;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;props&#x8FC7;&#x6EE4;<code>ProductTable</code>&#x4E2D;&#x7684;&#x884C;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x8868;&#x5355;&#x5B57;&#x6BB5;&#x4E2D;<code>SearchBar</code>&#x7684;&#x503C;&#x3002;<br>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;&#x6211;&#x4EEC;&#x5E94;&#x7528;&#x7684;&#x884C;&#x4E3A;&#xFF1A;&#x5728;<code>filterText</code>&#x4E2D;&#x8BBE;&#x7F6E;<code>&quot;ball&quot;</code>&#x5E76;&#x5237;&#x65B0;&#x5E94;&#x7528;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6570;&#x636E;&#x88AB;&#x6B63;&#x786E;&#x7684;&#x66F4;&#x65B0;&#x4E86;&#x3002;</li>
+</ul>
+<h1 id="&#x7B2C;&#x4E94;&#x6B65;-&#x6DFB;&#x52A0;&#x53CD;&#x5411;&#x6570;&#x636E;&#x6D41;">&#x7B2C;&#x4E94;&#x6B65;-&#x6DFB;&#x52A0;&#x53CD;&#x5411;&#x6570;&#x636E;&#x6D41;</h1><p><iframe id="cp_embed_qRqmjd" src="//codepen.io/rohan10/embed/qRqmjd?height=265&amp;theme-id=0&amp;slug-hash=qRqmjd&amp;default-tab=js%2Cresult&amp;user=rohan10&amp;embed-version=2&amp;pen-title=Thinking%20In%20React%3A%20Step%205" scrolling="no" frameborder="0" height="265" allowtransparency="true" allowfullscreen="true" name="CodePen Embed" title="Thinking In React: Step 5" class="cp_embed_iframe " style="width: 100%; overflow: hidden;"> </iframe><br>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x6E32;&#x67D3;&#x3001;&#x6570;&#x636E;&#x6D41;&#x4ECE;&#x4E0A;&#x81F3;&#x4E0B;&#x7684;&#x5E94;&#x7528;&#x3002;&#x662F;&#x65F6;&#x5019;&#x652F;&#x6301;&#x53E6;&#x4E00;&#x79CD;&#x53CD;&#x5411;&#x7684;&#x6570;&#x636E;&#x6D41;&#x65B9;&#x5F0F;&#x4E86;-&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;&#x5E95;&#x5C42;&#x7684;form&#x7EC4;&#x4EF6;&#x987B;&#x6709;&#x66F4;&#x65B0;<code>FilterableProducTable</code>&#x4E2D;&#x7684;state&#x3002;<br>React&#x91C7;&#x7528;&#x4E86;&#x660E;&#x786E;&#x7684;&#x6570;&#x636E;&#x6D41;&#x5411;&#xFF0C;&#x4F7F;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x66F4;&#x8F7B;&#x677E;&#x7684;&#x7406;&#x89E3;&#x7A0B;&#x5E8F;&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x3002;&#x4F46;&#x8FD9;&#x4E5F;&#x4F7F;&#x5F97;&#x5176;&#x76F8;&#x5BF9;&#x4E8E;&#x4F20;&#x7EDF;&#x7684;&#x53CC;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x800C;&#x8A00;&#xFF0C;&#x5728;&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x591A;&#x6572;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x3002;<br>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x5728;&#x5F53;&#x524D;&#x7248;&#x672C;&#x4E2D;&#x4FEE;&#x6539;&#x590D;&#x9009;&#x6846;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;React&#x5E76;&#x672A;&#x5BF9;&#x5176;&#x4F5C;&#x51FA;&#x54CD;&#x5E94;-&#x8FD9;&#x662F;&#x6709;&#x610F;&#x4E3A;&#x4E4B;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x4E86;<code>input</code>&#x4E2D;<code>value</code>&#x7684;props&#x7531;<code>FilterableProducTable</code>&#x7684;<code>state</code>&#x4F20;&#x9012;&#x800C;&#x6765;&#xFF0C;&#x4F7F;&#x5176;&#x59CB;&#x7EC8;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x3002;<br>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x60F3;&#x4FDD;&#x8BC1;&#x65E0;&#x8BBA;&#x7528;&#x6237;&#x4F55;&#x65F6;&#x4FEE;&#x6539;&#x8868;&#x683C;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF0C;state&#x90FD;&#x4F1A;&#x53CA;&#x65F6;&#x66F4;&#x65B0;&#x5E76;&#x53CD;&#x6620;&#x51FA;&#x8FD9;&#x4E9B;&#x53D8;&#x5316;&#x3002;&#x7531;&#x4E8E;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x53EA;&#x80FD;&#x591F;&#x66F4;&#x65B0;&#x4ED6;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;state&#xFF0C;<code>FilterableProducTable</code>&#x5C06;&#x4F20;&#x9012;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7ED9;<code>SearchBar</code>&#xFF0C;&#x8FD9;&#x4E9B;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5728;&#x9700;&#x8981;&#x66F4;&#x65B0;state&#x65F6;&#x89E6;&#x53D1;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x7ED1;&#x5B9A;&#x5728;onChange&#x4E8B;&#x4EF6;&#x4E0A;&#x63A5;&#x53D7;&#x901A;&#x77E5;&#x3002;&#x7531;<code>FilterableProducTable</code>&#x4F20;&#x9012;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5C06;&#x8C03;&#x7528;<code>setState()</code>&#xFF0C;&#x4ECE;&#x800C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F1A;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x3002;<br>&#x5C3D;&#x7BA1;&#x8FD9;&#x542C;&#x8D77;&#x6765;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x4F46;&#x5176;&#x5B9E;&#x53EA;&#x9700;&#x5C11;&#x91CF;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x3002;&#x540C;&#x65F6;&#x8FD9;&#x80FD;&#x591F;&#x6E05;&#x6670;&#x7684;&#x5C55;&#x793A;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x6D41;&#x5411;&#x3002;  </p>
+<h1 id="&#x5199;&#x5728;&#x6700;&#x540E;">&#x5199;&#x5728;&#x6700;&#x540E;</h1><p>&#x5E0C;&#x671B;&#x8FD9;&#x80FD;&#x591F;&#x7ED9;&#x4F60;&#x4E00;&#x4E9B;&#x5728;&#x5173;&#x4E8E;&#x4F7F;&#x7528;React&#x6784;&#x5EFA;&#x7EC4;&#x4EF6;&#x548C;&#x5E94;&#x7528;&#x65B9;&#x6CD5;&#x7684;&#x60F3;&#x6CD5;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E5F;&#x8BB8;&#x786E;&#x5B9E;&#x4F1A;&#x8BA9;&#x4F60;&#x6BD4;&#x5E73;&#x65F6;&#x591A;&#x5199;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x8BF7;&#x8BB0;&#x4F4F;&#xFF0C;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x3001;&#x6A21;&#x5757;&#x6027;&#x8FDC;&#x6BD4;&#x5C11;&#x5199;&#x51E0;&#x884C;&#x4EE3;&#x7801;&#x6765;&#x7684;&#x91CD;&#x8981;&#x3002;&#x5F53;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5927;&#x578B;&#x7EC4;&#x4EF6;&#x5E93;&#x65F6;&#xFF0C;&#x60A8;&#x4F1A;&#x611F;&#x6FC0;&#x8FD9;&#x4E9B;&#x7ED3;&#x6784;&#x6E05;&#x6670;&#x3001;&#x6A21;&#x5757;&#x5316;&#x4E14;&#x53EF;&#x91CD;&#x7528;&#x7684;&#x4EE3;&#x7801;:-)</p>
+
+        <p><strong>本文首发于<a href="http://www.miaoyunze.com/">http://www.miaoyunze.com/</a>，转载请注明出处</p></strong>   
+               
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/06/02/React-Tutorial-12-Thinking-in-React/" data-id="cj3gzbw9s001nwkwaifd778t3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frontend/">Frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/30/React-Tutorial-11-Composition-vs-Inheritance/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">React教程 - 11. 组合与继承</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+ 
+  <section id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miaoyunze-com'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  </section>
+  </section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-UI/">Android UI</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/">Angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Frontend/">Frontend</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA多线程/">JAVA多线程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/d3/">d3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android-UI/" style="font-size: 15px;">Android UI</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/Frontend/" style="font-size: 20px;">Frontend</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JAVA多线程/" style="font-size: 12.5px;">JAVA多线程</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/React/" style="font-size: 17.5px;">React</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/02/React-Tutorial-12-Thinking-in-React/">React教程 - 12. React的编程思想</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/30/React-Tutorial-11-Composition-vs-Inheritance/">React教程 - 11. 组合与继承</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/23/React-Tutorial-10-Lifting-State-Up/">React教程 - 10. 状态提升</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/22/React-Tutorial-9-Forms/">React教程 - 9. 表单</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/React-Tutorial-7-Conditional-Rendering/">React教程 - 7. 条件渲染</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">浏览次数</h3>
+    <div class="widget">
+      <ul class="popularlist">
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+<!--page counter part-->
+<script>
+function addCount (Counter) {
+  var url = $('.article-date').attr('href').trim();
+  var title = $('.article-title').text().trim();
+  var query = new AV.Query('Counter');
+  //use url as unique idnetfication
+  query.equalTo("url", url);
+  query.find().then(function(results){
+    if(!results){
+      console.log("get data error")
+    }
+    else if(results.length > 0){
+      var counter = results[0]
+      $('.article-header').append('<div class="margin-top-20">阅读次数：'+ counter.attributes.time + '</div>')
+      counter.fetchWhenSave(true);
+      counter.increment("time");
+      counter.save();
+    }
+    else{
+      url = $('.article-date').attr('href').trim();
+      title = $('.article-title').text().trim();
+      $('.article-header').append('<div class="margin-top-20">阅读次数：0</div>')
+      var newcounter = new Counter();
+      newcounter.set("title", title);
+      newcounter.set("url", url);
+      newcounter.set("time", 1);
+
+      var acl = new AV.ACL();
+      acl.setPublicReadAccess(true);
+      acl.setPublicWriteAccess(true);
+      newcounter.setACL(acl);
+
+      newcounter.save(null,{
+        success: function(newcounter){
+          //alert('New object created');
+        },
+        error: function(newcounter,error){
+          console.log('Failed to create');
+        }
+      });
+    }
+  });
+}
+
+$(function(){
+  var Counter = AV.Object.extend("Counter");
+  //only increse visit counting when intering a page
+  if ($('.article-title').length == 1)
+    addCount(Counter);
+  var query = new AV.Query(Counter);
+  query.descending("time");
+  // the sum of popular posts
+  query.limit(10);
+  query.find().then(function(results){
+    if(!results){
+      return;
+    }else{
+      for(var i=0;i<results.length;i++){
+        var counter=results[i];
+        title=counter.get("title");
+        url=counter.get("url");
+        time=counter.get("time");
+        // add to the popularlist widget
+        showcontent=title+" ("+time+")";
+        //notice the "" in href
+        $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+      }
+    }
+  });
+});
+
+</script>
+  </div>
+</body>
+</html>
