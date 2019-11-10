@@ -51,7 +51,7 @@
     
     <title>
         
-            在浏览器的多个tab页中共享sessionStorage | 
+            从前端到后台-Python基础 | 
         
         缪运泽
     </title>
@@ -63,9 +63,13 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="&lt;!-- toc --&gt;
 
-注册storage事件
-通过localStorage.setItem执行storage中的函数
-编写storage事件函数
+数据类型与变量
+list, tuple, dict, set
+条件判断与循环
+函数
+高级特征
+函数式编程
+下章预期时间/进度
 
 &lt;!-- tocstop --&gt;">
     <meta name="keywords" content="null">
@@ -234,7 +238,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="缪运泽">
-    <meta name="msapplication-starturl" content="http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/">
+    <meta name="msapplication-starturl" content="http://miaoyunze.com/2019/11/10/FE-BE-2/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="缪运泽">
@@ -249,22 +253,26 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/">
+    <meta property="og:url" content="http://miaoyunze.com/2019/11/10/FE-BE-2/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="在浏览器的多个tab页中共享sessionStorage | 缪运泽">
+    <meta property="og:title" content="从前端到后台-Python基础 | 缪运泽">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="&lt;!-- toc --&gt;
 
-注册storage事件
-通过localStorage.setItem执行storage中的函数
-编写storage事件函数
+数据类型与变量
+list, tuple, dict, set
+条件判断与循环
+函数
+高级特征
+函数式编程
+下章预期时间/进度
 
 &lt;!-- tocstop --&gt;">
     
 
     
-        <meta property="article:published_time" content="Wed Jun 21 2017 19:37:39 GMT+0800">
-        <meta property="article:modified_time" content="Sat Nov 02 2019 18:57:47 GMT+0800">
+        <meta property="article:published_time" content="Sun Nov 10 2019 15:32:27 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 10 2019 16:45:54 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -272,7 +280,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/index.html" />
+        <link rel="canonical" href="http://miaoyunze.com/2019/11/10/FE-BE-2/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -284,10 +292,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/index.html",
-    "headline": "在浏览器的多个tab页中共享sessionStorage",
-    "datePublished": "Wed Jun 21 2017 19:37:39 GMT+0800",
-    "dateModified": "Sat Nov 02 2019 18:57:47 GMT+0800",
+    "mainEntityOfPage": "http://miaoyunze.com/2019/11/10/FE-BE-2/index.html",
+    "headline": "从前端到后台-Python基础",
+    "datePublished": "Sun Nov 10 2019 15:32:27 GMT+0800",
+    "dateModified": "Sun Nov 10 2019 16:45:54 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "缪运泽",
@@ -308,9 +316,13 @@
     "keywords": "null",
     "description": "&lt;!-- toc --&gt;
 
-注册storage事件
-通过localStorage.setItem执行storage中的函数
-编写storage事件函数
+数据类型与变量
+list, tuple, dict, set
+条件判断与循环
+函数
+高级特征
+函数式编程
+下章预期时间/进度
 
 &lt;!-- tocstop --&gt;",
 }
@@ -377,7 +389,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注册storage事件"><span class="post-toc-number">1.</span> <span class="post-toc-text">注册storage事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#通过localstoragesetitem执行storage中的函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">通过localStorage.setItem执行storage中的函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编写storage事件函数"><span class="post-toc-number">3.</span> <span class="post-toc-text">编写storage事件函数</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据类型与变量"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据类型与变量</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#list-tuple-dict-set"><span class="post-toc-number">2.</span> <span class="post-toc-text">list, tuple, dict, set</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#条件判断与循环"><span class="post-toc-number">3.</span> <span class="post-toc-text">条件判断与循环</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数"><span class="post-toc-number">4.</span> <span class="post-toc-text">函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#高级特征"><span class="post-toc-number">5.</span> <span class="post-toc-text">高级特征</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数式编程"><span class="post-toc-number">6.</span> <span class="post-toc-text">函数式编程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下章预期时间进度"><span class="post-toc-number">7.</span> <span class="post-toc-text">下章预期时间/进度</span></a></li></ol>
     </ul>
     
 
@@ -409,7 +421,7 @@
         
     
             <p class="article-headline-p">
-                在浏览器的多个tab页中共享sessionStorage
+                从前端到后台-Python基础
             </p>
         </div>
 
@@ -428,7 +440,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>缪运泽</strong>
-        <span>6月 21, 2017</span>
+        <span>11月 10, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -458,7 +470,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/06/21/share-sessionData-between-tabs/" class="leancloud-views_num" data-flag-title="在浏览器的多个tab页中共享sessionStorage">
+                <span id="/2019/11/10/FE-BE-2/" class="leancloud-views_num" data-flag-title="从前端到后台-Python基础">
      &nbsp;浏览量
 </span>
 
@@ -470,7 +482,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=在浏览器的多个tab页中共享sessionStorage&url=http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/index.html&pic=http://miaoyunze.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=从前端到后台-Python基础&url=http://miaoyunze.com/2019/11/10/FE-BE-2/index.html&pic=http://miaoyunze.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -479,7 +491,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=在浏览器的多个tab页中共享sessionStorage&url=http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/index.html&via=缪运泽" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=从前端到后台-Python基础&url=http://miaoyunze.com/2019/11/10/FE-BE-2/index.html&via=缪运泽" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -488,7 +500,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://miaoyunze.com/2019/11/10/FE-BE-2/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -497,7 +509,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://miaoyunze.com/2017/06/21/share-sessionData-between-tabs/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://miaoyunze.com/2019/11/10/FE-BE-2/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -524,100 +536,106 @@
     
         <!-- toc -->
 <ul>
-<li><a href="#&#x6CE8;&#x518C;storage&#x4E8B;&#x4EF6;">&#x6CE8;&#x518C;storage&#x4E8B;&#x4EF6;</a></li>
-<li><a href="#&#x901A;&#x8FC7;localstoragesetitem&#x6267;&#x884C;storage&#x4E2D;&#x7684;&#x51FD;&#x6570;">&#x901A;&#x8FC7;localStorage.setItem&#x6267;&#x884C;storage&#x4E2D;&#x7684;&#x51FD;&#x6570;</a></li>
-<li><a href="#&#x7F16;&#x5199;storage&#x4E8B;&#x4EF6;&#x51FD;&#x6570;">&#x7F16;&#x5199;storage&#x4E8B;&#x4EF6;&#x51FD;&#x6570;</a></li>
+<li><a href="#&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x53D8;&#x91CF;">&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x53D8;&#x91CF;</a></li>
+<li><a href="#list-tuple-dict-set">list, tuple, dict, set</a></li>
+<li><a href="#&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4E0E;&#x5FAA;&#x73AF;">&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4E0E;&#x5FAA;&#x73AF;</a></li>
+<li><a href="#&#x51FD;&#x6570;">&#x51FD;&#x6570;</a></li>
+<li><a href="#&#x9AD8;&#x7EA7;&#x7279;&#x5F81;">&#x9AD8;&#x7EA7;&#x7279;&#x5F81;</a></li>
+<li><a href="#&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</a></li>
+<li><a href="#&#x4E0B;&#x7AE0;&#x9884;&#x671F;&#x65F6;&#x95F4;&#x8FDB;&#x5EA6;">&#x4E0B;&#x7AE0;&#x9884;&#x671F;&#x65F6;&#x95F4;/&#x8FDB;&#x5EA6;</a></li>
 </ul>
 <!-- tocstop -->
 <a id="more"></a>
-<p>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x591A;&#x4E2A;tab&#x9875;&#x4E2D;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;cookie&#x6216;localStorage&#x5B9E;&#x73B0;&#x3002;<br>&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x5173;&#x95ED;&#x540E;&#x5373;&#x6E05;&#x9664;&#x8BE5;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;sessionStorage&#x5B8C;&#x6210;&#x3002;<br>&#x4F46;sessionStorage&#x4EC5;&#x4FDD;&#x5B58;&#x5728;&#x5F53;&#x524D;tab&#x9875;&#x4E2D;&#xFF0C;&#x60F3;&#x8981;&#x5728;&#x591A;&#x4E2A;tab&#x4E2D;&#x5171;&#x4EAB;&#x8BE5;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;localStorage&#x5B9E;&#x73B0;&#x3002;</p>
-<h1 id="&#x6CE8;&#x518C;storage&#x4E8B;&#x4EF6;">&#x6CE8;&#x518C;storage&#x4E8B;&#x4EF6;</h1><p>&#x5F53;localStorage&#x7684;&#x503C;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x9875;&#x9762;&#x4F1A;&#x76D1;&#x542C;&#x5230;&#x201D;stroage&#x201D;&#x4E8B;&#x4EF6;&#xFF1A;</p>
-<pre><code class="javascript">window.addEventListener(&quot;storage&quot;, function(event){
-  if(!event.newValue){
-    reutrn;
-  }
-  if(event.key == &quot;getSession&quot;){
-    localStorage.setItem(&quot;storeSessionData&quot;, sessionStorage.getItem(&quot;sessionValue&quot;));
-    localStorage.removeItem(&quot;storeSessionData&quot;);
-  }
-  ...
-});
-</code></pre>
-<p>&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5F53; <code>localStorage</code> &#x4E2D; <code>key</code> &#x4E3A; <code>getSession</code> &#x7684;&#x5185;&#x5BB9;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x4E2D;&#x6709;&#x4E00;&#x4E2A; <code>event</code> &#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;event&#x7684;&#x5C5E;&#x6027; <code>key</code> &#x4E3A; <code>localStorage&#x6539;&#x53D8;&#x5185;&#x5BB9;&#x7684;key(&#x8FD9;&#x91CC;&#x4E3A;getSession)</code> , &#x53E6;&#x4E00;&#x4E2A;&#x5C5E;&#x6027; <code>newValue</code> &#x5B58;&#x50A8;&#x7740; <code>localStorage&#x4E2D;key&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5BB9;</code> &#xFF0C;&#x5229;&#x7528;&#x8BE5;&#x65B9;&#x5F0F;&#x53EF;&#x5B8C;&#x6210;sessionStorage&#x5728;tab&#x95F4;&#x7684;&#x5171;&#x4EAB;</p>
-<h1 id="&#x901A;&#x8FC7;localstoragesetitem&#x6267;&#x884C;storage&#x4E2D;&#x7684;&#x51FD;&#x6570;">&#x901A;&#x8FC7;localStorage.setItem&#x6267;&#x884C;storage&#x4E2D;&#x7684;&#x51FD;&#x6570;</h1><p>&#x5728;&#x65B0;&#x6253;&#x5F00;&#x7684;tab&#x4E2D;&#xFF0C;&#x9996;&#x5148;&#x68C0;&#x67E5;session&#x7684;&#x503C;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x82E5;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x6267;&#x884C;&#xFF1A;</p>
-<pre><code class="javascript">if(!sessionStorage.getItem(&quot;sessionValue&quot;)){
-  localStorage.setItem(&quot;getSession&quot;, Date.now());
-}
-</code></pre>
-<h1 id="&#x7F16;&#x5199;storage&#x4E8B;&#x4EF6;&#x51FD;&#x6570;">&#x7F16;&#x5199;storage&#x4E8B;&#x4EF6;&#x51FD;&#x6570;</h1><pre><code class="javascript">window.addEventListener(&quot;storage&quot;, function(event){
-  ...
-  if(event.key == &quot;getSession&quot;){
-    localStorage.setItem(&quot;storeSessionData&quot;, sessionStorage.getItem(&quot;sessionValue&quot;));
-    localStorage.removeItem(&quot;storeSessionData&quot;);
-  }
-  if(event.key == &quot;storeSessionData&quot;){
-    sessionStorage.setItem(&quot;sessionValue&quot;, event.newValue);
-    $(&quot;#session-data-panel&quot;).text(&quot;Session: &quot; + sessionStorage.getItem(&quot;sessionValue&quot;));
-    localStorage.removeItem(&quot;getSession&quot;);
-  }
-  ...
-});
-</code></pre>
-<p>&#x65B0;&#x5EFA;tab&#x9875;&#x4E2D;&#x6267;&#x884C;<code>localStorage.setItem(&quot;getSession&quot;, Date.now());</code>&#x4F1A;&#x5BFC;&#x81F4;&#x5176;&#x4ED6;tab&#x9875;&#x8FDB;&#x5165;&#x7B2C;&#x4E00;&#x4E2A;if&#xFF0C;&#x6267;&#x884C;</p>
-<pre><code class="javascript">localStorage.setItem(&quot;storeSessionData&quot;, sessionStorage.getItem(&quot;sessionValue&quot;));
-localStorage.removeItem(&quot;storeSessionData&quot;);
-</code></pre>
-<p>&#x5728;&#x5176;&#x4ED6;tab&#x6267;&#x884C;&#x5B8C;&#x7B2C;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x4F1A;&#x6FC0;&#x6D3B;&#x65B0;&#x6253;&#x5F00;&#x7684;tab&#x5F00;&#x59CB;&#x6267;&#x884C;&#x201D;storage&#x201D;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;if&#xFF0C;&#x6267;&#x884C;sessionStorage.setItem&#xFF0C;&#x83B7;&#x53D6;&#x5176;&#x4ED6;tab&#x4E2D;sessionStorage&#x5B58;&#x50A8;&#x7684;&#x503C;(event.newValue)&#x3002;<br>&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x5F53;&#x67D0;&#x4E2A;tab&#x4E2D;&#x7684;sessionStorage&#x7684;&#x5185;&#x5BB9;&#x88AB;&#x4FEE;&#x6539;&#x65F6;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x5229;&#x7528;localStorage&#x5B8C;&#x6210;sessionStorage&#x4E0E;&#x5176;&#x4ED6;tab&#x7684;&#x540C;&#x6B65;&#x3002;</p>
-<p><a href="https://codepen.io/19920612/full/LLyqvP/" target="_blank" rel="external">&#x5728;&#x7EBF;Demo</a><br>&#x5728;Demo&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x9875;&#x9762;&#x521D;&#x59CB;&#x7684;session&#x4E3A;&#x7A7A;&#xFF0C;&#x70B9;&#x51FB;&#x6309;&#x94AE;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5185;&#x5BB9;&#x4E3A;&#x968F;&#x673A;&#x6570;&#x7684;session&#xFF0C;&#x518D;&#x5728;&#x65B0;&#x7684;&#x9875;&#x9762;&#x4E2D;&#x6253;&#x5F00;&#x8BE5;&#x5730;&#x5740;&#xFF0C;&#x4E24;&#x4E2A;tab&#x95F4;&#x7684;session&#x5185;&#x5BB9;&#x662F;&#x540C;&#x6B65;&#x7684;&#x3002;</p>
-<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="javascript">&lt;script src=&quot;https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-  $().ready(function(){
-    if(!sessionStorage.getItem(&quot;sessionValue&quot;)){
-      localStorage.setItem(&quot;getSession&quot;, Date.now());
-    }else{
-      $(&quot;#session-data-panel&quot;).text(&quot;Session: &quot; + sessionStorage.getItem(&quot;sessionValue&quot;));
-    }
-
-    window.addEventListener(&quot;storage&quot;, function(event){
-      if(!event.newValue){
-        return ;
-      }
-      if(event.key == &quot;getSession&quot;){
-        localStorage.setItem(&quot;storeSessionData&quot;, sessionStorage.getItem(&quot;sessionValue&quot;));
-        localStorage.removeItem(&quot;storeSessionData&quot;);
-      }
-      if(event.key == &quot;storeSessionData&quot;){
-        sessionStorage.setItem(&quot;sessionValue&quot;, event.newValue);
-        $(&quot;#session-data-panel&quot;).text(&quot;Session: &quot; + sessionStorage.getItem(&quot;sessionValue&quot;));
-        localStorage.removeItem(&quot;getSession&quot;);
-      }
-      if(event.key == &quot;updateSession&quot;){
-        sessionStorage.setItem(&quot;sessionValue&quot;, event.newValue);
-        $(&quot;#session-data-panel&quot;).text(&quot;Session: &quot; + sessionStorage.getItem(&quot;sessionValue&quot;));
-        localStorage.removeItem(&quot;updateSession&quot;);
-      }
-    });
-
-    $(&quot;#create-session-btn&quot;).click(function(){
-      var t = Math.random() * 100;            
-      sessionStorage.setItem(&quot;sessionValue&quot;, t);
-      $(&quot;#session-data-panel&quot;).text(&quot;Session: &quot; + t);
-      localStorage.setItem(&quot;updateSession&quot;, t);
-    });
-  });
-&lt;/script&gt;
-&lt;body&gt;
-  &lt;div id=&quot;session-data-panel&quot;&gt;Session: No Session&lt;/div&gt;
-  &lt;button id=&quot;create-session-btn&quot;&gt;Click create a random session&lt;/button&gt;
-&lt;/body&gt;
-</code></pre>
-<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
+<p>&#x9009;&#x62E9;&#x770B;&#x5ED6;&#x96EA;&#x5CF0;&#x8001;&#x5E08;&#x7684;<a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="external">python&#x6559;&#x7A0B;</a>&#x4F5C;&#x4E3A;&#x5165;&#x95E8;&#xFF0C;&#x672C;&#x5468;&#x5B66;&#x5B8C;&#x4E86;&#x57FA;&#x7840;&#x3001;&#x51FD;&#x6570;&#x3001;&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7B49;&#x90E8;&#x5206;&#x3002;</p>
+<h1 id="&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x53D8;&#x91CF;">&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x53D8;&#x91CF;</h1><p>&#x548C;&#x5927;&#x591A;&#x8BED;&#x8A00;&#x4E00;&#x6837;&#xFF0C;python&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5305;&#x62EC;Int, Float, Str, Boolean, &#x7A7A;(None), const<br>&#x4E0E;JS&#x7684;&#x4E0D;&#x540C;&#x4E4B;&#x5904;</p>
 <ol>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank" rel="external">Using the Web Storage API</a></li>
-<li><a href="https://blog.guya.net/2015/06/12/sharing-sessionstorage-between-tabs-for-secure-multi-tab-authentication/" target="_blank" rel="external">Sharing sessionStorage between tabs for secure multi-tab authentication</a></li>
-<li><a href="https://stackoverflow.com/questions/20325763/browser-sessionstorage-share-between-tabs" target="_blank" rel="external">browser sessionStorage. share between tabs?</a></li>
+<li>Pthon&#x7528;None&#x8868;&#x793A;&#x7A7A;&#xFF0C;&#x800C;&#x975E;JS&#x4E2D;&#x7684;null</li>
+<li>&#x5728;&#x6570;&#x5B57;&#x9664;&#x6CD5;&#x4E2D;&#xFF0C;python&#x63D0;&#x4F9B;&#x4E86;&#x5730;&#x677F;&#x9664;(<strong>//</strong>), &#x529F;&#x80FD;&#x4E3A;&#x5FFD;&#x7565;&#x5C0F;&#x6570;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x7684;&#x6574;&#x6570;&#x90E8;&#x5206;&#xFF0C;&#x7C7B;&#x4F3C;Math.floor(result)</li>
+<li>&#x5728;Boolean&#x4E2D;&#xFF0C;python&#x7684;True&#x548C;False&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;</li>
+<li>&#x5173;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x8868;&#x793A;,python&#x652F;&#x6301;&#x4F7F;&#x7528;&#x201D;%&#x201D;&#x505A;&#x5360;&#x4F4D;&#x7B26; - &#x7C7B;&#x4F3C;C&#x8BED;&#x8A00;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x4E0E;JS&#x4E2D;&#x8F6C;&#x4E49;&#x5B57;&#x7B26;&#x4E32;&#x529F;&#x80FD;&#x7C7B;&#x4F3C;`this is ${VARABLE}`</li>
 </ol>
+<h1 id="list-tuple-dict-set">list, tuple, dict, set</h1><p>&#x8FD9;&#x4E9B;&#x53EF;&#x4EE5;&#x5206;&#x522B;&#x4E0E;JS&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x7C7B;&#x578B;&#x5BF9;&#x5E94;:<br>list - JS&#x4E2D;&#x7684;array<br>tuple - JS&#x4E2D;&#x7684;const array. tuple&#x5199;&#x6CD5;&#x548C;list&#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x662F;&#x628A;&#x4E2D;&#x62EC;&#x53F7;<strong>[]</strong>&#x6362;&#x6210;&#x4E86;&#x5706;&#x62EC;&#x53F7;<strong>()</strong><br>dict - JS&#x4E2D;&#x7684;Map<br>set - JS&#x4E2D;&#x7684;Set</p>
+<h1 id="&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4E0E;&#x5FAA;&#x73AF;">&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4E0E;&#x5FAA;&#x73AF;</h1><p>if&#x4E0E;for&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;Python&#x662F;&#x4EE5; <strong>&#x5192;&#x53F7;</strong> + <strong>4&#x4E2A;&#x7F29;&#x8FDB;</strong> &#x6765;&#x64CD;&#x4F5C;&#x7684;</p>
+<h1 id="&#x51FD;&#x6570;">&#x51FD;&#x6570;</h1><p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x6CE8;&#x610F;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x53EF;&#x53D8;&#x53C2;&#x6570;*args&#x548C;&#x5173;&#x952E;&#x5B57;&#x53C2;&#x6570;**kw<br>&#x53EF;&#x53D8;&#x53C2;&#x6570;&#x5141;&#x8BB8;&#x4F20;&#x5165;0&#x6216;&#x4EFB;&#x610F;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x81EA;&#x52A8;&#x7EC4;&#x88C5;&#x4E3A;&#x4E00;&#x4E2A;tuple<br>&#x5173;&#x952E;&#x5B57;&#x53C2;&#x6570;&#x5141;&#x8BB8;&#x4F20;&#x5165;0&#x6216;&#x4EFB;&#x610F;&#x4E2A;<strong>&#x542B;&#x53C2;&#x6570;&#x540D;</strong>&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x81EA;&#x52A8;&#x7EC4;&#x88C5;&#x4E3A;&#x4E00;&#x4E2A;dict<br>&#x4F8B;&#xFF1A;</p>
+<pre><code class="python">def fun(a, b, *c, **d):
+    print(c)
+    print(d)
+    return a + b
+fun(1, 2, &apos;x&apos;, &apos;y&apos;, z=1)
+# output: (&apos;x&apos;, &apos;y&apos;)
+# output: {&apos;z&apos;: 1}
+# output: 3
+</code></pre>
+<h1 id="&#x9AD8;&#x7EA7;&#x7279;&#x5F81;">&#x9AD8;&#x7EA7;&#x7279;&#x5F81;</h1><p>&#x5207;&#x7247;&#x3001;&#x8FED;&#x4EE3;&#x3001;&#x5217;&#x8868;&#x751F;&#x6210;&#x5F0F;&#x3001;&#x751F;&#x6210;&#x5668;&#x548C;&#x8FED;&#x4EE3;&#x5668;</p>
+<ul>
+<li>&#x5207;&#x7247; - &#x7C7B;&#x4F3C;JS&#x6570;&#x7EC4;&#x4E2D;&#x7684;slice, &#x5199;&#x6CD5;&#x4E3A;str[start = 0 : end = length - 1 : gap = 1]. &#x53E6;&#x5916;&#xFF0C;Python&#x7684;&#x5207;&#x7247;&#x652F;&#x6301;&#x8D1F;&#x6570;&#x4E14;&#x5012;&#x6570;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x7D22;&#x5F15;&#x4E3A;-1:<pre><code class="python">&apos;abcd&apos;[-2:] #output: &apos;cd&apos;
+</code></pre>
+</li>
+<li>&#x8FED;&#x4EE3; - &#x80FD;&#x591F;&#x901A;&#x8FC7;for&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x7684;&#x79F0;&#x4E3A;&#x53EF;&#x8FED;&#x4EE3;&#x5BF9;&#x8C61;&#x3002;&#x9664;list&#x548C;tuple&#x5916;&#xFF0C;dict&#x540C;&#x6837;&#x652F;&#x6301;<pre><code class="python">x = {&apos;a&apos;: 1, &apos;b&apos;: 1}
+for key in x:
+    print(key) 
+for value in x.values():
+    print(values) 
+for key, val in x.items():
+  print key, val
+</code></pre>
+</li>
+<li>&#x5217;&#x8868;&#x751F;&#x6210;&#x5668; - [x * x for x in range(3)], &#x652F;&#x6301;&#x4E24;&#x91CD;&#x5FAA;&#x73AF; - [a + b for a in range(2) for b in range(4)]</li>
+<li>&#x751F;&#x6210;&#x5668; - generator, next, yield, &#x7C7B;&#x4F3C;JS&#x7684;&#x751F;&#x6210;&#x5668;</li>
+<li>&#x8FED;&#x4EE3;&#x5668; - &#x6CE8;&#x610F;&#x8FED;&#x4EE3;&#x5668;&#x548C;&#x53EF;&#x8FED;&#x4EE3;&#x7684;&#x533A;&#x522B;(&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F5C;&#x7528;&#x4E8E;for&#x5FAA;&#x73AF;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x79F0;&#x4E4B;&#x4E3A;&#x53EF;&#x8FED;&#x4EE3;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;next()&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5E76;&#x4E0D;&#x65AD;&#x8FD4;&#x56DE;&#x4E0B;&#x4E00;&#x4E2A;&#x503C;&#x7684;&#x5BF9;&#x8C61;&#x79F0;&#x4E3A;&#x8FED;&#x4EE3;&#x5668;)</li>
+</ul>
+<h1 id="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h1><p>&#x6700;&#x5F00;&#x59CB;&#x7684;&#x9AD8;&#x7EA7;&#x51FD;&#x6570;&#x4E2D;&#x4ECB;&#x7ECD;&#x4E86;map/reduce, filter, sorted&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4E0E;JS&#x4E2D;Array&#x7684;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;</p>
+<ol>
+<li>&#x8FD9;&#x91CC;&#x7684;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x5E76;&#x628A;array&#x4F5C;&#x4E3A;&#x53C2;&#x6570;</li>
+<li>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x51FD;&#x6570;</li>
+</ol>
+<pre><code class="python">list(map(str, [1,2,3])) 
+#output: [&apos;1&apos;, &apos;2&apos;] (map&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x4E3A;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x901A;&#x8FC7;list&#x8F6C;&#x5316;)
+
+def add(x, y):
+      return x + y
+reduce(add, [1, 2, 3])  
+#output: 6
+
+def odd(x):
+      return x%2 == 1
+list(filter(odd, [1,2,3])) 
+#output: 1, 3 (filter&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x4E3A;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x901A;&#x8FC7;list&#x8F6C;&#x5316;)
+
+sorted([-1, 6, 0, -4], key=abs) #sorted&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x6765;&#x8868;&#x793A;&#x6392;&#x5E8F;&#x89C4;&#x5219;
+#output [0, -1, -4, 6]
+</code></pre>
+<p>&#x4E4B;&#x540E;&#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x4E86;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#xFF0C;&#x533F;&#x540D;&#x51FD;&#x6570;&#xFF0C;&#x88C5;&#x9970;&#x5668;&#x548C;&#x504F;&#x51FD;&#x6570;: </p>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x51FD;&#x6570; - &#x53CA;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E2A;&#x95ED;&#x5305;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4E0E;JS&#x7C7B;&#x4F3C;</li>
+<li>&#x533F;&#x540D;&#x51FD;&#x6570; - lambda&#x51FD;&#x6570;&#xFF0C;&#x7C7B;&#x4F3C;JS&#x4E2D;&#x7684;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#xFF0C;&#x5199;&#x6CD5;&#x4E3A;:<pre><code class="python">f = lambda x: x * x
+f(3)  #output: 9
+</code></pre>
+</li>
+<li>&#x88C5;&#x9970;&#x5668; - &#x5728;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x52A8;&#x6001;&#x589E;&#x52A0;&#x529F;&#x80FD;&#x7684;&#x65B9;&#x6CD5;:<pre><code class="python">def log(func):
+  def wrapper():
+      print(&apos;call %s():&apos; % func.__name__)
+      return func()
+  return wrapper
+@log
+def sayHi():
+  print(&apos;Hi&apos;)
+sayHi()
+#output: call sayHi():
+#output: 2019-10-11
+</code></pre>
+</li>
+<li>&#x504F;&#x51FD;&#x6570; - &#x7528;&#x4E8E;&#x7B80;&#x5316;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;:<pre><code class="python">import functools
+int2 = functools.partial(int, base=2)
+int2(&apos;1000000&apos;)
+#output: 64
+</code></pre>
+</li>
+</ul>
+<h1 id="&#x4E0B;&#x7AE0;&#x9884;&#x671F;&#x65F6;&#x95F4;&#x8FDB;&#x5EA6;">&#x4E0B;&#x7AE0;&#x9884;&#x671F;&#x65F6;&#x95F4;/&#x8FDB;&#x5EA6;</h1><ul>
+<li>&#x65F6;&#x95F4; - 20191120</li>
+<li>&#x8FDB;&#x5EA6; - &#x5B66;&#x5B8C;<strong>&#x6A21;&#x5757;</strong>~<strong>&#x56FE;&#x5F62;&#x754C;&#x9762;</strong></li>
+</ul>
 
         
     
@@ -663,21 +681,13 @@ localStorage.removeItem(&quot;storeSessionData&quot;);
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/07/17/karma-test/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/06/02/React-Tutorial-12-Thinking-in-React/" id="post_nav-older" class="next-content">
+        <a href="/2019/11/02/FE-BE-1/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

@@ -549,15 +549,221 @@ synchronized代码块
 <h2 id="&#x5185;&#x7F6E;&#x9501;">&#x5185;&#x7F6E;&#x9501;</h2><p>&#x6BCF;&#x4E00;&#x4E2A;Java&#x5BF9;&#x8C61;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x540C;&#x6B65;&#x7684;&#x9501;&#xFF0C;&#x79F0;&#x4E3A;&#x5185;&#x7F6E;&#x9501;&#xFF0C;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x4E4B;&#x524D;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x5230;&#x9501;&#xFF0C;&#x4EE3;&#x7801;&#x5757;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#x6216;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x9000;&#x51FA;&#x65F6;&#x4F1A;&#x91CA;&#x653E;&#x6389;&#x9501;<br>&#x5185;&#x7F6E;&#x9501;&#x4E3A;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x5373;&#x7EBF;&#x7A0B;A&#x83B7;&#x53D6;&#x5230;&#x9501;&#x540E;&#xFF0C;&#x7EBF;&#x7A0B;B&#x963B;&#x585E;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;A&#x9000;&#x51FA;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x7EBF;&#x7A0B;B&#x624D;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x6545;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x539F;&#x5B50;&#x6027; </p>
 <h2 id="&#x5BF9;&#x8C61;&#x9501;&#x548C;&#x7C7B;&#x9501;">&#x5BF9;&#x8C61;&#x9501;&#x548C;&#x7C7B;&#x9501;</h2><p>&#x5BF9;&#x8C61;&#x9501;&#xFF1A;&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x6216;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x4E0A;<br>&#x7C7B;&#x9501;&#xFF1A;&#x7528;&#x4E8E;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6216;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;class&#x5BF9;&#x8C61;&#x4E0A;<br>&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x4E2A;&#xFF0C;&#x4F46;&#x662F;&#x6BCF;&#x4E2A;&#x7C7B;&#x53EA;&#x6709;&#x4E00;&#x4E2A;class&#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x540C;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x5BF9;&#x8C61;&#x9501;&#x4E4B;&#x95F4;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x4F46;&#x6BCF;&#x4E2A;&#x7C7B;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x9501;<br><strong>&#x6709;&#x4E00;&#x70B9;&#x5FC5;&#x987B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x7C7B;&#x9501;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x4E0A;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x771F;&#x5B9E;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x5B83;&#x53EA;&#x662F;&#x7528;&#x6765;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x9501;&#x5B9A;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7684;&#x533A;&#x522B;&#x7684;</strong></p>
 <h2 id="synchronized">synchronized</h2><p>synchronized&#x53EF;&#x4EE5;&#x4F5C;&#x7528;&#x4E8E;&#x65B9;&#x6CD5;&#x6216;&#x4EE3;&#x7801;&#x5757;&#x3002;&#x7EBF;&#x7A0B;&#x6267;&#x884C;synchronized&#x4FEE;&#x9970;&#x7684;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x6D41;&#x7A0B;&#x4E3A;&#xFF1A;<br>&#x83B7;&#x53D6;&#x9501;-&gt;&#x6267;&#x884C;synchronized&#x4FEE;&#x9970;&#x7684;&#x4EE3;&#x7801;-&gt;&#x91CA;&#x653E;&#x9501;</p>
-<h3 id="synchronized&#x65B9;&#x6CD5;">synchronized&#x65B9;&#x6CD5;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">&quot;fun1 begin&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">            System.out.println(<span class="string">&quot;fun1 is working&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">&quot;fun1 end&quot;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">&quot;fun2 begin&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">            System.out.println(<span class="string">&quot;fun2 is working&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">&quot;fun2 end&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="keyword">final</span> Test t = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">new</span> Thread() {</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                t.fun1();</span><br><span class="line">            }</span><br><span class="line">        }.start();</span><br><span class="line">        <span class="keyword">new</span> Thread() {</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                t.fun2();</span><br><span class="line">            }</span><br><span class="line">        }.start();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;fun1&#x4E0E;fun2&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun1 begin</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 end</span><br><span class="line">fun2 begin</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 end</span><br></pre></td></tr></table></figure></p>
-<p>&#x5220;&#x9664;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;synchronized&#x5173;&#x952E;&#x5B57;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4EA4;&#x66FF;&#x6267;&#x884C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun1 begin</span><br><span class="line">fun2 begin</span><br><span class="line">fun1 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 end</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 end</span><br></pre></td></tr></table></figure></p>
+<h3 id="synchronized&#x65B9;&#x6CD5;">synchronized&#x65B9;&#x6CD5;</h3><pre><code class="java">class Test {
+    public synchronized void fun1() {
+        System.out.println(&quot;fun1 begin&quot;);
+        for (int i = 0; i &lt; 3; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.out.println(&quot;fun1 is working&quot;);
+        }
+        System.out.println(&quot;fun1 end&quot;);
+    }
+
+    public synchronized void fun2() {
+        System.out.println(&quot;fun2 begin&quot;);
+        for (int i = 0; i &lt; 3; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.out.println(&quot;fun2 is working&quot;);
+        }
+        System.out.println(&quot;fun2 end&quot;);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        final Test t = new Test();
+        new Thread() {
+            @Override
+            public void run() {
+                t.fun1();
+            }
+        }.start();
+        new Thread() {
+            @Override
+            public void run() {
+                t.fun2();
+            }
+        }.start();
+    }
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;fun1&#x4E0E;fun2&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="java">fun1 begin
+fun1 is working
+fun1 is working
+fun1 is working
+fun1 end
+fun2 begin
+fun2 is working
+fun2 is working
+fun2 is working
+fun2 end
+</code></pre>
+<p>&#x5220;&#x9664;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;synchronized&#x5173;&#x952E;&#x5B57;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4EA4;&#x66FF;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="java">fun1 begin
+fun2 begin
+fun1 is working
+fun2 is working
+fun1 is working
+fun2 is working
+fun1 is working
+fun1 end
+fun2 is working
+fun2 end
+</code></pre>
 <p>&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x6267;&#x884C;synchronized&#x4FEE;&#x9970;&#x7684;&#x65B9;&#x6CD5;&#x524D;&#xFF0C;&#x7EBF;&#x7A0B;&#x9700;&#x8981;&#x5148;&#x83B7;&#x53D6;&#x76F8;&#x5E94;&#x7684;&#x5BF9;&#x8C61;&#x9501;(&#x8FD9;&#x91CC;&#x5373;&#x4E3A;t&#x7684;&#x5BF9;&#x8C61;&#x9501;)&#x3002;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5728;&#x6267;&#x884C;t.fun1&#x65F6;&#x4F1A;&#x5360;&#x6709;&#x5BF9;&#x8C61;t&#x7684;&#x5BF9;&#x8C61;&#x9501;&#x76F4;&#x5230;fun1&#x6267;&#x884C;&#x7ED3;&#x675F;&#xFF0C;&#x5728;&#x6B64;&#x671F;&#x95F4;&#x7B2C;&#x4E8C;&#x4E2A;&#x7EBF;&#x7A0B;&#x7531;&#x4E8E;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;t&#x7684;&#x5BF9;&#x8C61;&#x9501;&#xFF0C;&#x56E0;&#x6B64;&#x5728;t.fun1()&#x6267;&#x884C;&#x5B8C;&#x6210;&#xFF0C;&#x91CA;&#x653E;t&#x7684;&#x5BF9;&#x8C61;&#x9501;&#x524D;&#x65E0;&#x6CD5;&#x6267;&#x884C;&#x88AB;synchronized&#x4FEE;&#x9970;&#x7684;t.fun2()</p>
-<p>&#x6613;&#x77E5;&#x5728;main&#x51FD;&#x6570;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E24;&#x4E2A;Test&#x5BF9;&#x8C61;t1&#x548C;t2&#x65F6;&#xFF0C;&#x5728;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x5206;&#x522B;&#x6267;&#x884C;t1.fun1()&#x548C;t2.fun2()&#x65F6;&#xFF0C;&#x7531;&#x4E8E;t1&#x4E0E;t2&#x4E3A;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x5206;&#x522B;&#x6267;&#x884C;t1.fun1()&#x548C;t2.fun2()&#x65F6;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x7684;&#x9501;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x4EA4;&#x66FF;&#x6267;&#x884C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">&quot;fun1 begin&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">            System.out.println(<span class="string">&quot;fun1 is working&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">&quot;fun1 end&quot;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">&quot;fun2 begin&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">            System.out.println(<span class="string">&quot;fun2 is working&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">&quot;fun2 end&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="keyword">final</span> Test t1 = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">final</span> Test t2 = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">new</span> Thread() {</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                t1.fun1();</span><br><span class="line">            }</span><br><span class="line">        }.start();</span><br><span class="line">        <span class="keyword">new</span> Thread() {</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                t2.fun2();</span><br><span class="line">            }</span><br><span class="line">        }.start();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun1 begin</span><br><span class="line">fun2 begin</span><br><span class="line">fun1 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 end</span><br><span class="line">fun1 end</span><br></pre></td></tr></table></figure></p>
-<p>&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x5C06;Test&#x4E2D;&#x7684;fun1&#x4E0E;fun2&#x5747;&#x6539;&#x4E3A;static method&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;method&#x5C31;&#x53D8;&#x6210;&#x5C5E;&#x4E8E;class&#x7684;method&#x4E86;&#x3002;&#x6B64;&#x65F6;&#x518D;&#x6267;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x9700;&#x8981;&#x7684;&#x4E3A;Test.class&#x7684;&#x9501;&#xFF0C;&#x56E0;&#x6B64;&#x4F1A;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun1 begin</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 end</span><br><span class="line">fun2 begin</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 end</span><br></pre></td></tr></table></figure></p>
-<h3 id="synchronized&#x4EE3;&#x7801;&#x5757;">synchronized&#x4EE3;&#x7801;&#x5757;</h3><p>&#x5728;&#x7C7B;Test&#x4E2D;&#x65B0;&#x5EFA;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;o1&#x548C;o2&#xFF0C;&#x5728;fun1&#x548C;fun2&#x4E2D;&#x5206;&#x522B;&#x4F7F;&#x7528;synchronized(o1)&#x548C;synchronized(o2)&#x83B7;&#x53D6;obj1&#x548C;obj2&#x7684;&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x9501;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;&#x4E24;&#x6761;&#x7EBF;&#x7A0B;&#x5206;&#x522B;&#x8C03;&#x7528;t.fun1&#x548C;t.fun2&#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4EA4;&#x4E92;&#x8FD0;&#x884C;&#x7684;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{</span><br><span class="line">    Object obj1 = <span class="keyword">new</span> Object();</span><br><span class="line">    Object obj2 = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">synchronized</span> (obj1) {</span><br><span class="line">            System.out.println(<span class="string">&quot;fun1 begin&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {</span><br><span class="line">                <span class="keyword">try</span> {</span><br><span class="line">                    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                }</span><br><span class="line">                System.out.println(<span class="string">&quot;fun1 is working&quot;</span>);</span><br><span class="line">            }</span><br><span class="line">            System.out.println(<span class="string">&quot;fun1 end&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">synchronized</span> (obj2) {</span><br><span class="line">            System.out.println(<span class="string">&quot;fun2 begin&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {</span><br><span class="line">                <span class="keyword">try</span> {</span><br><span class="line">                    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                }</span><br><span class="line">                System.out.println(<span class="string">&quot;fun2 is working&quot;</span>);</span><br><span class="line">            }</span><br><span class="line">            System.out.println(<span class="string">&quot;fun2 end&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="keyword">final</span> Test t = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">new</span> Thread() {</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                t.fun1();</span><br><span class="line">            }</span><br><span class="line">        }.start();</span><br><span class="line">        <span class="keyword">new</span> Thread() {</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                t.fun2();</span><br><span class="line">            }</span><br><span class="line">        }.start();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun1 begin</span><br><span class="line">fun2 begin</span><br><span class="line">fun2 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun1 is working</span><br><span class="line">fun2 is working</span><br><span class="line">fun2 end</span><br><span class="line">fun1 end</span><br></pre></td></tr></table></figure></p>
+<p>&#x6613;&#x77E5;&#x5728;main&#x51FD;&#x6570;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E24;&#x4E2A;Test&#x5BF9;&#x8C61;t1&#x548C;t2&#x65F6;&#xFF0C;&#x5728;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x5206;&#x522B;&#x6267;&#x884C;t1.fun1()&#x548C;t2.fun2()&#x65F6;&#xFF0C;&#x7531;&#x4E8E;t1&#x4E0E;t2&#x4E3A;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x5206;&#x522B;&#x6267;&#x884C;t1.fun1()&#x548C;t2.fun2()&#x65F6;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x7684;&#x9501;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x4EA4;&#x66FF;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="java">class Test {
+    public synchronized void fun1() {
+        System.out.println(&quot;fun1 begin&quot;);
+        for (int i = 0; i &lt; 3; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.out.println(&quot;fun1 is working&quot;);
+        }
+        System.out.println(&quot;fun1 end&quot;);
+    }
+
+    public synchronized void fun2() {
+        System.out.println(&quot;fun2 begin&quot;);
+        for (int i = 0; i &lt; 3; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            System.out.println(&quot;fun2 is working&quot;);
+        }
+        System.out.println(&quot;fun2 end&quot;);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        final Test t1 = new Test();
+        final Test t2 = new Test();
+        new Thread() {
+            @Override
+            public void run() {
+                t1.fun1();
+            }
+        }.start();
+        new Thread() {
+            @Override
+            public void run() {
+                t2.fun2();
+            }
+        }.start();
+    }
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="java">fun1 begin
+fun2 begin
+fun1 is working
+fun2 is working
+fun2 is working
+fun1 is working
+fun1 is working
+fun2 is working
+fun2 end
+fun1 end
+</code></pre>
+<p>&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x5C06;Test&#x4E2D;&#x7684;fun1&#x4E0E;fun2&#x5747;&#x6539;&#x4E3A;static method&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;method&#x5C31;&#x53D8;&#x6210;&#x5C5E;&#x4E8E;class&#x7684;method&#x4E86;&#x3002;&#x6B64;&#x65F6;&#x518D;&#x6267;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x9700;&#x8981;&#x7684;&#x4E3A;Test.class&#x7684;&#x9501;&#xFF0C;&#x56E0;&#x6B64;&#x4F1A;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;</p>
+<pre><code class="java">fun1 begin
+fun1 is working
+fun1 is working
+fun1 is working
+fun1 end
+fun2 begin
+fun2 is working
+fun2 is working
+fun2 is working
+fun2 end
+</code></pre>
+<h3 id="synchronized&#x4EE3;&#x7801;&#x5757;">synchronized&#x4EE3;&#x7801;&#x5757;</h3><p>&#x5728;&#x7C7B;Test&#x4E2D;&#x65B0;&#x5EFA;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;o1&#x548C;o2&#xFF0C;&#x5728;fun1&#x548C;fun2&#x4E2D;&#x5206;&#x522B;&#x4F7F;&#x7528;synchronized(o1)&#x548C;synchronized(o2)&#x83B7;&#x53D6;obj1&#x548C;obj2&#x7684;&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x9501;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;&#x4E24;&#x6761;&#x7EBF;&#x7A0B;&#x5206;&#x522B;&#x8C03;&#x7528;t.fun1&#x548C;t.fun2&#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4EA4;&#x4E92;&#x8FD0;&#x884C;&#x7684;&#xFF1A;</p>
+<pre><code class="java">class Test {
+    Object obj1 = new Object();
+    Object obj2 = new Object();
+
+    public void fun1() {
+        synchronized (obj1) {
+            System.out.println(&quot;fun1 begin&quot;);
+            for (int i = 0; i &lt; 3; i++) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(&quot;fun1 is working&quot;);
+            }
+            System.out.println(&quot;fun1 end&quot;);
+        }
+    }
+
+    public void fun2() {
+        synchronized (obj2) {
+            System.out.println(&quot;fun2 begin&quot;);
+            for (int i = 0; i &lt; 3; i++) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(&quot;fun2 is working&quot;);
+            }
+            System.out.println(&quot;fun2 end&quot;);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        final Test t = new Test();
+        new Thread() {
+            @Override
+            public void run() {
+                t.fun1();
+            }
+        }.start();
+        new Thread() {
+            @Override
+            public void run() {
+                t.fun2();
+            }
+        }.start();
+    }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="java">fun1 begin
+fun2 begin
+fun2 is working
+fun1 is working
+fun2 is working
+fun1 is working
+fun1 is working
+fun2 is working
+fun2 end
+fun1 end
+</code></pre>
 <p>&#x5220;&#x9664;&#x4EE3;&#x7801;&#x4E2D;&#x7684;obj1&#x548C;obj2&#xFF0C;&#x66FF;&#x6362;&#x4E3A;String str1 = &#x201C;test&#x201D;&#xFF0C;String str2 = &#x201C;test&#x201D;&#xFF0C;&#x5728;fun1&#x4E0E;fun2&#x7684;synchronized&#x4E2D;&#x5C06;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x5BF9;&#x8C61;&#x5206;&#x522B;&#x6539;&#x4E3A;str1&#x548C;str2&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4ECD;&#x7136;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF1A;fun1-&gt;fun2&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;<strong>java&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x5B58;&#x4E8E;&#x5806;&#x4E2D;&#xFF0C;&#x770B;&#x8D77;&#x6765;str1&#x548C;str2&#x662F;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4E24;&#x8005;&#x8FD8;&#x662F;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x201D;test&#x201D;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x7B49;&#x5F85;fun1&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x7EBF;&#x7A0B;&#x624D;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x201D;test&#x201D;&#x7684;&#x5BF9;&#x8C61;&#x9501;&#xFF0C;&#x8FDB;&#x5165;synchronized&#x4EE3;&#x7801;&#x6BB5;</strong></p>
 
         
@@ -710,7 +916,7 @@ synchronized代码块
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/10/">十月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/10/">十月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -728,7 +934,7 @@ synchronized代码块
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android-UI/">Android UI<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/">Frontend<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/Angular/">Angular<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/HTML/">HTML<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/JS/">JS<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/React/">React<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/d3/">d3<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Fullstack/">Fullstack<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/JAVA多线程/">JAVA多线程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/SQL/">SQL<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/markdown/">markdown<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android-UI/">Android UI<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/">Frontend<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/Angular/">Angular<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/HTML/">HTML<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/JS/">JS<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/React/">React<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/d3/">d3<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Fullstack/">Fullstack<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/JAVA多线程/">JAVA多线程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/SQL/">SQL<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/markdown/">markdown<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -742,7 +948,7 @@ synchronized代码块
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">35</span>
+                <span class="sidebar-badge">36</span>
             </a>
         </li>
         

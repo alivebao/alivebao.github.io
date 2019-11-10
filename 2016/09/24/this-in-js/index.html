@@ -539,18 +539,94 @@ apply/call模式
 <!-- tocstop -->
 <a id="more"></a>
 <h1 id="this&#x662F;&#x4EC0;&#x4E48;">this&#x662F;&#x4EC0;&#x4E48;</h1><p><a href="https://www.sitepoint.com/what-is-this-in-javascript/" target="_blank" rel="external">&#x2014;In most languages, &#x2018;this&#x2019; is a reference to the current object instantiated by the class. In JavaScript, &#x2018;this&#x2019; normally refers to the object which &#x2018;owns&#x2019; the method, but it depends on how a function is called.</a><br>&#x2014;&#x5927;&#x591A;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x2019;this&#x2019;&#x4EE3;&#x8868;&#x7531;&#x7C7B;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x3002;&#x5728;JavaScript&#x4E2D;&#xFF0C;&#x2019;this&#x2019;&#x901A;&#x5E38;&#x8868;&#x793A;&#x2019;&#x62E5;&#x6709;&#x2019;&#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x5177;&#x4F53;&#x53D6;&#x51B3;&#x4E8E;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
-<h1 id="&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6A21;&#x5F0F;">&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</h1><p>&#x5F53;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x4FDD;&#x5B58;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x5E76;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;this&#x88AB;&#x7ED1;&#x5B9A;&#x81F3;&#x8BE5;&#x5BF9;&#x8C61;&#x3002;&#x5373;&#x4F7F;&#x7528;&#x201D;obj.method&#x201D;&#x5F62;&#x5F0F;<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="string">&quot;outer&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> methodCall = {</span><br><span class="line">    val: <span class="string">&quot;inner&quot;</span>,</span><br><span class="line">    printVal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.val);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">methodCall.printVal();  <span class="comment">//&quot;inner&quot;</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;">&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</h1><p>&#x7C7B;&#x4F3C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x4E2D;<strong>&#x5BF9;&#x8C61;</strong>&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4F7F;&#x7528;new&#x540E;&#xFF0C;this&#x88AB;&#x7ED1;&#x5B9A;&#x81F3;&#x8BE5;&#x5B9E;&#x4F8B;&#x3002;<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="string">&quot;outer&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">methodCall</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="keyword">this</span>.val = <span class="string">&quot;inner&quot;</span>;</span><br><span class="line">}</span><br><span class="line">methodCall.prototype = {</span><br><span class="line">    printVal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.val);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> methodCall();</span><br><span class="line">a.printVal();   <span class="comment">//&quot;inner&quot;</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;">&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</h1><p>&#x51FD;&#x6570;&#x672A;&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x5176;&#x5F53;&#x4F5C;&#x4E00;&#x4E2A;&#x6B63;&#x5E38;&#x51FD;&#x6570;&#x6765;&#x8C03;&#x7528;&#xFF0C;&#x6B64;&#x65F6;this&#x88AB;&#x7ED1;&#x5B9A;&#x81F3;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x3002;<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="string">&quot;outer&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">methodCall</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="keyword">this</span>.val = <span class="string">&quot;inner&quot;</span>;</span><br><span class="line">}</span><br><span class="line">methodCall.prototype = {</span><br><span class="line">    printVal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">var</span> innerPrintVal = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">            <span class="built_in">console</span>.log(that.val);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.val)</span><br><span class="line">        }</span><br><span class="line">        innerPrintVal();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> methodCall();</span><br><span class="line">a.printVal();</span><br></pre></td></tr></table></figure></p>
-<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inner</span><br><span class="line">outer</span><br></pre></td></tr></table></figure></p>
-<ul>
+<h1 id="&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6A21;&#x5F0F;">&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</h1><p>&#x5F53;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x4FDD;&#x5B58;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x5E76;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;this&#x88AB;&#x7ED1;&#x5B9A;&#x81F3;&#x8BE5;&#x5BF9;&#x8C61;&#x3002;&#x5373;&#x4F7F;&#x7528;&#x201D;obj.method&#x201D;&#x5F62;&#x5F0F;</p>
+<pre><code>```js
+var val = &quot;outer&quot;;
+var methodCall = {
+    val: &quot;inner&quot;,
+    printVal: function(){
+        console.log(this.val);
+    }
+}
+methodCall.printVal();  //&quot;inner&quot;
+```
+</code></pre><h1 id="&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;">&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</h1><p>&#x7C7B;&#x4F3C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x4E2D;<strong>&#x5BF9;&#x8C61;</strong>&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4F7F;&#x7528;new&#x540E;&#xFF0C;this&#x88AB;&#x7ED1;&#x5B9A;&#x81F3;&#x8BE5;&#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code>```js
+var val = &quot;outer&quot;;
+function methodCall(){
+    this.val = &quot;inner&quot;;
+}
+methodCall.prototype = {
+    printVal: function(){
+        console.log(this.val);
+    }
+}
+var a = new methodCall();
+a.printVal();   //&quot;inner&quot;
+```
+</code></pre><h1 id="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;">&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</h1><p>&#x51FD;&#x6570;&#x672A;&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x5176;&#x5F53;&#x4F5C;&#x4E00;&#x4E2A;&#x6B63;&#x5E38;&#x51FD;&#x6570;&#x6765;&#x8C03;&#x7528;&#xFF0C;&#x6B64;&#x65F6;this&#x88AB;&#x7ED1;&#x5B9A;&#x81F3;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code>```js
+var val = &quot;outer&quot;;
+function methodCall(){
+    this.val = &quot;inner&quot;;
+}
+methodCall.prototype = {
+    printVal: function(){
+        var that = this;
+        var innerPrintVal = function(){
+            console.log(that.val);
+            console.log(this.val)
+        }
+        innerPrintVal();
+    }
+}
+var a = new methodCall();
+a.printVal();
+```
+</code></pre><p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x4E3A;</p>
+<pre><code>```js
+inner
+outer
+```
+</code></pre><ul>
 <li>a.printVal&#x8C03;&#x7528;printVal&#x7684;&#x65B9;&#x5F0F;&#x4E3A;<strong>&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</strong>&#xFF0C;&#x8FD9;&#x65F6;&#x7684;this&#x88AB;&#x7ED1;&#x5B9A;&#x5230;a&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x3002;&#x5C06;&#x5176;&#x8D4B;&#x7ED9;that&#xFF0C;&#x6B64;&#x65F6;that&#x5C31;&#x4EE3;&#x8868;&#x4E86;a&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x3002;</li>
 <li>a.printVal&#x8C03;&#x7528;innerPrintVal&#x7684;&#x65B9;&#x5F0F;&#x4E3A;<strong>&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;</strong>&#xFF0C;&#x8FD9;&#x65F6;&#x7684;this&#x88AB;&#x7ED1;&#x5B9A;&#x5230;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x3002;</li>
 </ul>
 <p>&#x6CE8;&#x610F;&#xFF0C;&#x5728;a.printVal&#x4E2D;&#xFF0C;this&#x662F;&#x88AB;&#x7ED1;&#x5B9A;&#x5728;a&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E0A;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5728;&#x8C03;&#x7528;innerPrintVal&#x65F6;&#xFF0C;this&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x4E2D;&#x88AB;<strong>&#x518D;&#x4E00;&#x6B21;</strong>&#x7ED1;&#x5B9A;&#x5230;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x4E86;&#x3002;&#x56E0;&#x6B64;&#x5728;innerPrintVal&#x4E2D;&#x8C03;&#x7528;console.log(this.val)&#x6253;&#x5370;&#x7684;&#x7ED3;&#x679C;&#x4E3A;&#x201D;outer&#x201D;</p>
-<h1 id="applycall&#x6A21;&#x5F0F;">apply/call&#x6A21;&#x5F0F;</h1><p>&#x624B;&#x52A8;&#x6307;&#x5B9A;this&#x7684;&#x503C;<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val = <span class="string">&quot;outer&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printVal</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.val);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">methodCall</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="keyword">this</span>.val = <span class="string">&quot;inner&quot;</span>;</span><br><span class="line">}</span><br><span class="line">methodCall.prototype = {</span><br><span class="line">    printVal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.val);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> methodCall();</span><br><span class="line">a.printVal();               <span class="comment">//&quot;inner&quot;</span></span><br><span class="line">a.printVal.call(a);         <span class="comment">//&quot;inner&quot;</span></span><br><span class="line">printVal.call(a);           <span class="comment">//&quot;inner&quot;</span></span><br><span class="line"></span><br><span class="line">printVal();                 <span class="comment">//&quot;outer&quot;</span></span><br><span class="line">printVal.apply(<span class="built_in">window</span>);     <span class="comment">//&quot;outer&quot;</span></span><br><span class="line">a.printVal.apply(<span class="built_in">window</span>);   <span class="comment">//&quot;outer&quot;</span></span><br></pre></td></tr></table></figure></p>
-<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;<br>    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inner</span><br><span class="line">inner</span><br><span class="line">inner</span><br><span class="line">outer</span><br><span class="line">outer</span><br><span class="line">outer</span><br></pre></td></tr></table></figure></p>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x91C7;&#x7528;&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;&#x7684;a.printVal&#x6216;&#x662F;&#x91C7;&#x7528;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;&#x7684;printVal&#xFF0C;this&#x5747;&#x4F1A;&#x88AB;apply/call&#x7ED1;&#x5B9A;&#x4E3A;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#x7684;&#x503C;</p>
+<h1 id="applycall&#x6A21;&#x5F0F;">apply/call&#x6A21;&#x5F0F;</h1><p>&#x624B;&#x52A8;&#x6307;&#x5B9A;this&#x7684;&#x503C;</p>
+<pre><code>```js
+var val = &quot;outer&quot;;
+
+function printVal(){
+    console.log(this.val);
+}
+function methodCall(){
+    this.val = &quot;inner&quot;;
+}
+methodCall.prototype = {
+    printVal: function(){
+        console.log(this.val);
+    }
+}
+var a = new methodCall();
+a.printVal();               //&quot;inner&quot;
+a.printVal.call(a);         //&quot;inner&quot;
+printVal.call(a);           //&quot;inner&quot;
+
+printVal();                 //&quot;outer&quot;
+printVal.apply(window);     //&quot;outer&quot;
+a.printVal.apply(window);   //&quot;outer&quot;
+```
+</code></pre><p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;</p>
+<pre><code>```js
+inner
+inner
+inner
+outer
+outer
+outer
+```
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x91C7;&#x7528;&#x6784;&#x9020;&#x5668;&#x8C03;&#x7528;&#x6A21;&#x5F0F;&#x7684;a.printVal&#x6216;&#x662F;&#x91C7;&#x7528;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6A21;&#x5F0F;&#x7684;printVal&#xFF0C;this&#x5747;&#x4F1A;&#x88AB;apply/call&#x7ED1;&#x5B9A;&#x4E3A;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#x7684;&#x503C;</p>
 
         
     
@@ -702,7 +778,7 @@ apply/call模式
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/10/">十月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/10/">十月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/04/">四月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -720,7 +796,7 @@ apply/call模式
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android-UI/">Android UI<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/">Frontend<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/Angular/">Angular<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/HTML/">HTML<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/JS/">JS<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/React/">React<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/d3/">d3<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Fullstack/">Fullstack<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/JAVA多线程/">JAVA多线程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/SQL/">SQL<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/markdown/">markdown<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android-UI/">Android UI<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/">Frontend<span class="sidebar_archives-count">24</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/Angular/">Angular<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/HTML/">HTML<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/JS/">JS<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/React/">React<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/Frontend/d3/">d3<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Fullstack/">Fullstack<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/JAVA多线程/">JAVA多线程<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/SQL/">SQL<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/markdown/">markdown<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -734,7 +810,7 @@ apply/call模式
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">35</span>
+                <span class="sidebar-badge">36</span>
             </a>
         </li>
         
